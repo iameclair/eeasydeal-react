@@ -1,0 +1,39 @@
+@import "init";
+.Auth{
+  padding: 2%;
+  margin: 1%;
+  .auth-form-title{
+    text-align: center;
+    margin: 0 0 2% 0;
+    color: $primary;
+  }
+  .auth-form-content{
+    .Input{
+      padding: 2%;
+      input[type="text"], input[type="password"], input[type="email"]{
+        outline: none;
+        box-shadow: none !important;
+        border: 1px solid $primary;
+      }
+      .errorMessage{
+        color:$danger;
+        text-align: right;
+        width:100%;
+        display: block;
+      }
+      .btn-primary{
+        background-color: $primary;
+        color:$secondary;
+        border-color: $primary;
+      }
+      .btn-primary:hover{
+        border-color: $secondary-dark;
+        color: $light;
+      }
+    }
+    .auth-link-container{
+      text-align: right;
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+//declare color variables
+$primary:#13215b;
+$secondary:#F3CB00;
+$primary-dark:#15294b;
+$secondary-dark:#F2ba00;
+$dark:#121212;
+$muted:#888888;
+$light:#ffffff;
+$danger:#DC3545;
+
+// Small tablets and smartphones (landscape view)
+$screen-sm-max: 598px;
+
+// Small tablets (portrait view)
+$screen-md-min: 599px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+//for bigger screen
+$screen-xxl-min: 1600px;
+
+// Small devices
+@mixin sm {
+  @media only screen and (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+//Double Extra large devices
+@mixin xxl {
+  @media (min-width: #{$screen-xxl-min}) {
+    @content
+  }
+}
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}

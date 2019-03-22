@@ -1,0 +1,81 @@
+@import "init";
+//body and html defaults
+* {
+  font-family: 'Roboto', "Helvetica Neue",sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  color: $dark;
+  text-decoration: none;
+  font-family: 'Roboto', "Helvetica Neue",sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+div{
+  box-sizing: border-box;
+}
+img{
+  width: 100%;
+}
+.row{
+  padding: 0;
+  margin: 0;
+}
+input[type="text"], input[type="password"], input[type="email"], textarea {
+  outline: none;
+  box-shadow:none !important;
+  padding: 1rem;
+  border-radius: 0;
+}
+input[type="text"], input[type="password"], input[type="email"], textarea :focus{
+  outline: none;
+  box-shadow:none !important;
+  border: none;
+}
+input[type="checkbox"]{
+  width: 3rem;
+  transform: scale(1.9);
+}
+.clickable-link{
+  font-size: 1.2rem;
+  display: inline-block;
+  margin: 1%;
+  padding: 2%;
+}
+.clickable-link a{
+  color: $primary !important;
+}
+.vertical-separator{
+   font-size: 1.2rem;
+   color: $primary-dark;
+}
+.content-main-container{
+  min-height: calc(100vh - 70px);
+}
+.Footer{
+  height: 50px;
+}
+.container{
+  @include sm {
+  }
+  @include md {
+
+  }
+  // 992px window width and more
+  @include lg {
+
+  }
+  @include xl{
+
+  }
+  // 1600px window width and more
+  @include xxl{
+
+  }
+}

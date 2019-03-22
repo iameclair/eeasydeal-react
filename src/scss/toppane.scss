@@ -1,0 +1,86 @@
+@import "init";
+.Toppane{
+  @include sm {
+    padding: 1% 2%;
+  }
+  @include md {
+    padding: 0;
+    background-color: #0cd4d2;
+  }
+  // 992px window width and more
+  @include lg {
+    padding: 0;
+    background-color: burlywood;
+  }
+  @include xl{
+    padding: 0;
+    background-color: forestgreen;
+  }
+  // 1600px window width and more
+  @include xxl{
+    padding: 0;
+    background-color: floralwhite;
+  }
+  background-color: $primary;
+  color: $secondary;
+  padding: 1rem 0 0 0.5rem;
+  justify-content: center;
+  .logo-container{
+    width: 15%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    @include sm {
+      display: none;
+    }
+  }
+  .search-container{
+    width: 60%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    @include sm {
+      width: 100%;
+    }
+  }
+  .shopping-container{
+    width: 10%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    @include sm {
+      position: absolute;
+      left: 45%;
+      top: 2%;
+    }
+  }
+  .account-container-mobile{
+    width: 10%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    @include sm {
+      position: absolute;
+      right: 0;
+      top: 2%;
+    }
+  }
+  .account-container{
+    width: 10%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    @include sm {
+      position: absolute;
+      right: 0;
+      top: 2%;
+    }
+  }
+}

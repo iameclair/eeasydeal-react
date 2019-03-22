@@ -1,0 +1,91 @@
+@import "init";
+.Navigation{
+  padding: 0.5rem 0;
+  background-color: $primary;
+  .nav li a{
+    color: $secondary !important;
+    font-size: 1.1rem;
+  }
+  nav .navbar-nav li a:hover{
+    color: #ffffff !important;
+  }
+  .nav-item{
+    border-bottom: 1px solid transparent;
+  }
+  .nav-item:hover{
+    border-bottom: 1px solid $light;
+  }
+
+  @include sm {
+      background-color: brown;
+      display: none;
+  }
+  @include md {
+    padding: 0;
+    background-color: #0cd4d2;
+  }
+  // 992px window width and more
+  @include lg {
+    padding: 0;
+    background-color: burlywood;
+  }
+  @include xl{
+    padding: 0;
+    background-color: forestgreen;
+  }
+  // 1600px window width and more
+  @include xxl{
+    padding: 0;
+    background-color: floralwhite;
+  }
+}
+//Mobile navigation
+.mobile-navigation-container{
+  @include md{
+    display: none;
+  }
+  .mobile-nav{
+    font-size: 2rem;
+    text-align: center;
+    padding: 0 1%;
+    display: inline-block;
+    margin: 0 1%;
+  }
+}
+.MobileNavigation{
+  @include sm {
+    display: block;
+  }
+  @include md {
+    padding: 0;
+    display: none;
+  }
+
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #13215b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+  a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f3cb00;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+}
