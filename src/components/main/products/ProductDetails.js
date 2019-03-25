@@ -4,9 +4,10 @@ import ProductDescription from "./ProductDescription";
 import AboutTheDeal from "./AboutTheDeal";
 import ProductLocation from "./ProductLocation";
 import ProductReview from "./ProductReview";
-import {ProductAction} from "../../actions/ProductAction";
+import {ProductAction} from "../../../actions/ProductAction";
 import {connect} from "react-redux";
-import {BasketActions} from "../../actions/BasketActions";
+import {BasketActions} from "../../../actions/BasketActions";
+
 
 class ProductDetails extends Component {
 
@@ -209,12 +210,12 @@ class ProductDetails extends Component {
                                     <div className="carousel-inner">
                                         {this.renderImages(images)}
                                     </div>
-                                    <a className="carousel-control-prev" href="#productCarousel" role="button"
+                                    <button className="carousel-control-prev" href="#productCarousel" role="button"
                                        data-slide="prev">
                                         <span className="carousel-control-prev-icon carousel-handler"
                                               aria-hidden="true"/>
                                         <span className="sr-only">Previous</span>
-                                    </a>
+                                    </button>
                                     <a className="carousel-control-next" href="#productCarousel" role="button"
                                        data-slide="next">
                                         <span className="carousel-control-next-icon carousel-handler"
@@ -315,16 +316,13 @@ class ProductDetails extends Component {
                             </div>
                             <div className="social-media">
                             <span className="d-inline-block m-1 p-1">
-                                 <img src={require("../../assets/images/facebook.png")} width="60" height="60"
-                                      className="float-left" alt=""/>
+                                <i className="fa fa-facebook fa-2x"/>
                             </span>
                                 <span className="d-inline-block m-1 p-1">
-                                 <img src={require("../../assets/images/twitter.jpg")} width="60" height="60"
-                                      className="float-left" alt=""/>
+                                 <i className="fa fa-twitter fa-2x"/>
                             </span>
                                 <span className="d-inline-block m-1 p-1">
-                                 <img src={require("../../assets/images/instagram.png")} width="60" height="60"
-                                      className="float-left" alt=""/>
+                                 <i className="fa fa-instagram fa-2x"/>
                             </span>
                             </div>
                         </div>

@@ -36,4 +36,19 @@
       color: $primary;
     }
   }
+  @include sm {
+
+  }
+  @include md {
+  }
+  // 992px window width and more
+  @include lg {
+  }
+  @include xl{
+    width: 50%;
+    margin: 1% auto 1% auto;
+  }
+  // 1600px window width and more
+  @include xxl{
+  }
 }

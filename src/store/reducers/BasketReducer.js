@@ -1,4 +1,4 @@
-import {BasketConstants} from "../../Constants/BasketConstants";
+import {BasketConstants} from "../../constants/BasketConstants";
 const initState = {};
 
 const CartReducer = (state = initState, action) =>{

@@ -1,4 +1,4 @@
-import {ProductConstants} from "../../Constants/ProductConstants";
+import {ProductConstants} from "../../constants/ProductConstants";
 
 const initState = {
     loading: false,

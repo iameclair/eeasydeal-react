@@ -1,4 +1,4 @@
-import {UserConstants} from "../../Constants/UserConstants";
+import {UserConstants} from "../../constants/UserConstants";
 
 const passwordManagementReducer = (state = {message:null}, action) => {
     switch (action.type) {

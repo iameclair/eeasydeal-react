@@ -13,6 +13,10 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import ForgetPassword from "./auth/ForgetPassword";
 import ResetPassword from "./auth/ResetPassword";
+import ProductDetails from "./main/products/ProductDetails";
+import Account from "./topbar/Account/Account";
+import ActivateAccount from "./auth/ActivateAccount";
+import MyAccount from "./topbar/Account/MyAccount";
 
 class App extends Component {
   render() {
@@ -25,14 +29,14 @@ class App extends Component {
                       <Navigation/>
                       <Switch>
                           <Route path="/" exact component={Landing}/>
-                          {/*<Route path="/product/:id" component={ProductDetails}/>*/}
+                          <Route path="/product/:id" component={ProductDetails}/>
                           <RouteGuards.OnlyNonAuth path="/login" component={Login}/>
                           <RouteGuards.OnlyNonAuth path="/register" component={Register}/>
                           <RouteGuards.OnlyNonAuth path="/forget-password" component={ForgetPassword}/>
                           <RouteGuards.OnlyNonAuth path="/password-reset" component={ResetPassword}/>
                           {/*<Route path="/basket" component={Basket}/>*/}
-                          {/*<Route path="/activate/:uid/:token" component={ActivateAccount}/>*/}
-                          {/*<RouteGuards.RequireAuth path="/account/:page" component={MyAccount}/>*/}
+                          <Route path="/activate/:uid/:token" component={ActivateAccount}/>
+                          <RouteGuards.RequireAuth path="/account/:page" component={MyAccount}/>
                           <Route component={Landing} />
                       </Switch>
                   </div>

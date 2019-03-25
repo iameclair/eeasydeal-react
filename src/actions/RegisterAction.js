@@ -1,5 +1,5 @@
 import {RegisterService} from "../services/RegisterService";
-import {UserConstants} from "../Constants/UserConstants";
+import {UserConstants} from "../constants/UserConstants";
 import {ActionUtils} from "./ActionUtils";
 
 const register = (user) =>{

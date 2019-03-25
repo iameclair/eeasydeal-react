@@ -54,22 +54,22 @@ class ProductPagination extends Component{
             <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-center">
                     <li className="prev page-item" id="previous-link" onClick={e => this.handleClick(currentPage-1, e)}>
-                        <a className="page-link" href="javascript:void(0);">&lt;</a>
+                        <button className="page-link">&lt;</button>
                     </li>
                     <li className="first page-item" onClick={e => this.handleClick(1, e)}>
-                        <a className="page-link" href="javascript:void(0);">&lt;&lt;</a>
+                        <button className="page-link">&lt;&lt;</button>
                     </li>
                     {numberOfPages.map((value, index) =>
                         <div key={index}>
                             <li className="page-item" onClick={e => this.handleClick(value, e)}>
-                                <a className="page-link" href="javascript:void(0);">{value}</a>
+                                <button className="page-link">{value}</button>
                             </li>
                         </div>)}
                     <li className="next" onClick={e => this.handleClick(currentPage+1, e)}>
-                        <a className="page-link" href="javascript:void(0);">&gt;</a>
+                        <button className="page-link">&gt;</button>
                     </li>
                     <li className="last" onClick={e => this.handleClick(lastPage, e)}>
-                        <a className="page-link" href="javascript:void(0);">&gt;&gt;</a>
+                        <button className="page-link">&gt;&gt;</button>
                     </li>
                 </ul>
             </nav>

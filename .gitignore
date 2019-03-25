@@ -25,3 +25,5 @@ yarn-error.log*
 
 #id files
 **/.idea/workspace.xml
+.idea/encodings.xml
+

@@ -1,4 +1,4 @@
-import {UserConstants} from "../Constants/UserConstants";
+import {UserConstants} from "../constants/UserConstants";
 import {AuthService} from "../services/AuthService";
 import {ActionUtils} from "./ActionUtils";
 

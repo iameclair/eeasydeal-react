@@ -1,38 +1,30 @@
-import React, {Component} from 'react'
-class Carousel extends Component{
-    render() {
+import React, { PureComponent } from "react";
+import Slider from "react-slick";
 
+export default class Carousel extends PureComponent {
+    render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrow:true
+        };
         return (
             <div className="Carousel">
-                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img className="d-block w-100" src={require("../../assets/images/banner1.jpg")}
-                                 alt="First slide"/>
-                        </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src={require('../../assets/images/banner2.png')}
-                                 alt="Second slide"/>
-                        </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src={require('../../assets/images/banner3.jpg')}
-                                 alt="Third slide"/>
-                        </div>
+                <Slider {...settings}>
+                    <div className="carousel-item d-flex">
+                        <img src={require("../../assets/images/banner1.jpg")} alt="banner1"/>
                     </div>
-                    <a className="carousel-control-prev" href="#carouselExampleIndicators"
-                       role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"/>
-                        <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselExampleIndicators"
-                       role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"/>
-                        <span className="sr-only">Next</span>
-                    </a>
-                </div>
+                    <div className="carousel-item d-flex">
+                        <img src={require("../../assets/images/banner2.png")} alt="banner2"/>
+                    </div>
+                    <div className="carousel-item d-flex">
+                        <img src={require("../../assets/images/banner3.jpg")} alt="banner2"/>
+                    </div>
+                </Slider>
             </div>
         );
     }
 }
-
-export default Carousel;

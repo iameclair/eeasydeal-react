@@ -1,26 +1,5 @@
 @import "init";
 .Toppane{
-  @include sm {
-    padding: 1% 2%;
-  }
-  @include md {
-    padding: 0;
-    background-color: #0cd4d2;
-  }
-  // 992px window width and more
-  @include lg {
-    padding: 0;
-    background-color: burlywood;
-  }
-  @include xl{
-    padding: 0;
-    background-color: forestgreen;
-  }
-  // 1600px window width and more
-  @include xxl{
-    padding: 0;
-    background-color: floralwhite;
-  }
   background-color: $primary;
   color: $secondary;
   padding: 1rem 0 0 0.5rem;
@@ -68,7 +47,29 @@
       position: absolute;
       right: 0;
       top: 2%;
+      display: block;
     }
+    @include md {
+      display: none;
+    }
+    // 992px window width and more
+    @include lg {
+      .account-container-mobile{
+        display: none;
+      }
+    }
+    @include xl{
+      .account-container-mobile{
+        display: none;
+      }
+    }
+    // 1600px window width and more
+    @include xxl{
+      .account-container-mobile{
+        display: none;
+      }
+    }
+
   }
   .account-container{
     width: 10%;

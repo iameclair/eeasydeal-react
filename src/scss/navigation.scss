@@ -17,26 +17,17 @@
   }
 
   @include sm {
-      background-color: brown;
       display: none;
   }
   @include md {
-    padding: 0;
-    background-color: #0cd4d2;
   }
   // 992px window width and more
   @include lg {
-    padding: 0;
-    background-color: burlywood;
   }
   @include xl{
-    padding: 0;
-    background-color: forestgreen;
   }
   // 1600px window width and more
   @include xxl{
-    padding: 0;
-    background-color: floralwhite;
   }
 }
 //Mobile navigation

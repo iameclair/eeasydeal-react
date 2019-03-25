@@ -1,4 +1,4 @@
-import {ProductConstants} from "../../Constants/ProductConstants";
+import {ProductConstants} from "../../constants/ProductConstants";
 let cart = JSON.parse(localStorage.getItem('cart'));
 let offlineCart = JSON.parse(localStorage.getItem('aybegdtyruklmop_fgrty'));
 

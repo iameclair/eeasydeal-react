@@ -8,7 +8,7 @@ class AccountMobile extends PureComponent {
     render() {
         return (
             <div className="AccountMobile" id="accountMobile">
-                <a href="javascript:void(0)" className="closebtn" onClick={this.closeAccountMobile}>&times;</a>
+                <button  className="closebtn" onClick={this.closeAccountMobile}>&times;</button>
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <Link to="/login" className="nav-link active">Login</Link>

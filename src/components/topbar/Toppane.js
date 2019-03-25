@@ -41,27 +41,23 @@ class Toppane extends PureComponent {
                         </div>
                         {
                             (this.state.loggedIn ?
-                                <div className="shopping-container">
-                                    <ShoppingBag/>
-                                </div> :
-                                <div className="shopping-container">
-                                    <ShoppingBag/>
-                                </div>
-                            )
-                        }
-                        {
-                            (this.state.loggedIn ?
-                                    <div className="account-container">
-                                        <i className="fa fa-user-circle fa-2x"/>
-                                        <div className="account-snapshot">
-                                            <Account/>
-                                        </div>
-                                    </div>:
-                                    <div className="account-container-mobile">
-                                        <i className="fa fa-user-circle fa-2x" onClick={this.openAccount}/>
+                                    <div className="shopping-container">
+                                        <ShoppingBag/>
+                                    </div> :
+                                    <div className="shopping-container">
+                                        <ShoppingBag/>
                                     </div>
                             )
                         }
+                        <div className="account-container">
+                            <i className="fa fa-user-circle fa-2x"/>
+                            <div className="account-snapshot">
+                                <Account/>
+                            </div>
+                        </div>
+                        <div className="account-container-mobile">
+                            <i className="fa fa-user-circle fa-2x" onClick={this.openAccount}/>
+                        </div>
                     </div>
                 </div>
             </div>

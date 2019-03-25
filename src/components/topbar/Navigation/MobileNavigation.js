@@ -8,7 +8,7 @@ class MobileNavigation extends PureComponent {
     render() {
         return (
             <div className="MobileNavigation" id="mobileNavigation">
-                <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
+                <button className="closebtn" onClick={this.closeNav}>&times;</button>
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <Link to="/" className="nav-link active">Home</Link>

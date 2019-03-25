@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 import {ProductAction} from "../../actions/ProductAction";
 import {connect} from "react-redux";
 import Carousel from "./Carousel";
-import Product from "./Products/Product";
-import ProductPagination from "./Products/ProductPagination";
+import Product from "./products/Product";
+import ProductPagination from "./products/ProductPagination";
 
 class Landing extends Component {
     componentDidMount()  {
@@ -36,7 +36,7 @@ class Landing extends Component {
     }
 
     createProducts(products){
-        return products.map((product) => <div className="product-item-container" key={product.id}>
+        return products.map((product) => <div className="product-item-container shadow" key={product.id}>
             <Link to={`/product/${product.id}`}>{this.createProduct(product)}</Link>
         </div>);
     }
@@ -51,23 +51,26 @@ class Landing extends Component {
         return(
             <div className="Landing">
                 <Carousel/>
-                <div className="container">
-                    <div className="product-container">
+                <div className="">
+                    <div className="landing-container">
                         <div className="trending-product-section">
-                            <h3 className="trending">Trending now</h3>
-                            <div className="row">
+                            <h3 className="section-title">Trending now</h3>
+                            <div className="trending-product-item">
                                 {this.createProducts(results)}
                             </div>
                             <div><ProductPagination numberOfPages={numberOfPages} currentPage={currentPage} lastPage={numberOfPages}/></div>
                         </div>
                         <div className="advert-deals-section">
-                            <h1>Hotest Deals Section</h1>
+                            <h3 className="section-title">Checkout the hottest deals</h3>
+                            <div>
+                                <img src="../../assets/images/banner9.png" alt="advert"/>
+                            </div>
                         </div>
                         <div className="promotion-deals-section">
-                            <h1>Play a game to unlock further deals</h1>
+                            <h3 className="section-title">Play a game to unlock further deals</h3>
                         </div>
                         <div className="personalised-deals-section">
-                            <h1>Personalised deals</h1>
+                            <h3 className="section-title">Personalised deals</h3>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import {ProductConstants} from "../Constants/ProductConstants";
+import {ProductConstants} from "../constants/ProductConstants";
 import {ActionUtils} from "./ActionUtils";
 import {ProductService} from "../services/ProductService";
 

@@ -1,0 +1,28 @@
+@import "init";
+.Landing{
+  .landing-container{
+    width:95%;
+    margin: 1% auto 2% auto;
+    .trending-product-section{
+      margin: 0 0 2% 0;
+      .trending-title{
+        margin: 1%;
+      }
+      .trending-product-item{
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        .product-item-container{
+          background-color: $light;
+          width: 18%;
+          height: 400px;
+          margin: 1%;
+        }
+      }
+      .advert-deals-section{
+        margin: 0 0 2% 0;
+      }
+    }
+  }
+}

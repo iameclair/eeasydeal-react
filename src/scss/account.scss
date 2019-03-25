@@ -7,6 +7,9 @@
       width:22rem;
       z-index: 10;
       display: none;
+      @include xl{
+        top: 8%;
+      }
   }
   .account-snapshot::after{
     content: " ";
