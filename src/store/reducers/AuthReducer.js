@@ -2,18 +2,16 @@ import {UserConstants} from "../../constants/UserConstants";
 
 let user = JSON.parse(localStorage.getItem('user'));
 const initState = user ? {
+    loading:false,
     loggedIn: true,
-    loggedOut: false,
-    active: true,
-    success: true,
-    error: false,
+    message:null,
+    attempt: false,
     user:user
 } : {
+    loading:false,
     loggedIn: false,
-    loggedOut: false,
-    active: false,
-    success: false,
-    error: false,
+    attempt: false,
+    message:null,
     user: {}
 };
 
@@ -21,23 +19,27 @@ const authReducer = (state = initState, action) =>{
     switch (action.type) {
         case UserConstants.LOGIN_REQUEST:
             return {
-                ...state
+                ...state,
+               loading: true,
             };
         case UserConstants.LOGIN_SUCCESS:
             return {
                 ...state,
+                loading:false,
                 loggedIn: true,
-                error:false,
-                success: true,
-                user: action.payload
+                message:action.payload.message,
+                attempt: true,
+                user: action.payload.user
             };
         case UserConstants.LOGIN_FAILURE:
             return {
                 ...state,
+                loading:false,
                 loggedIn:false,
-                success: false,
-                error: true,
+                attempt:true,
+                message:action.payload.message
             };
+
         case UserConstants.LOGOUT_REQUEST:
             return {
                 ...state,

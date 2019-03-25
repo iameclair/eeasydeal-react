@@ -1,11 +1,13 @@
 @import "init";
 .Landing{
+  @include sm{
+  }
   .landing-container{
     width:95%;
     margin: 1% auto 2% auto;
     .trending-product-section{
       margin: 0 0 2% 0;
-      .trending-title{
+      .section-title{
         margin: 1%;
       }
       .trending-product-item{
@@ -22,6 +24,20 @@
       }
       .advert-deals-section{
         margin: 0 0 2% 0;
+      }
+      @include sm{
+        .section-title{
+          margin: 1% 0 1% 0;
+         color: $primary;
+         font-size: 16px;
+        }
+        .trending-product-item{
+          .product-item-container{
+            background-color: $light;
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
     }
   }

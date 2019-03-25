@@ -8,13 +8,11 @@ import RouteGuards from "../utils"
 import Landing from "./main/Landing";
 import Navigation from "./topbar/Navigation/Navigation";
 import Footer from "./footer/Footer";
-import MobileNavigation from "./topbar/Navigation/MobileNavigation";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import ForgetPassword from "./auth/ForgetPassword";
 import ResetPassword from "./auth/ResetPassword";
 import ProductDetails from "./main/products/ProductDetails";
-import Account from "./topbar/Account/Account";
 import ActivateAccount from "./auth/ActivateAccount";
 import MyAccount from "./topbar/Account/MyAccount";
 

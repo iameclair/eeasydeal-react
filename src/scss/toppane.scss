@@ -4,6 +4,23 @@
   color: $secondary;
   padding: 1rem 0 0 0.5rem;
   justify-content: center;
+  @include sm{
+    margin: 0 0 2% 0;
+    padding: 1% 1% 2%;
+  }
+  @include xl{
+    padding: 1% 0 0 0;
+  }
+  .row{
+    @include sm{
+      .mobile-navigation-container{
+        margin-left: 2%;
+        .mobile-nav{
+          font-size: 24px;
+        }
+      }
+    }
+  }
   .logo-container{
     width: 15%;
     padding: 0 0.3rem;
@@ -34,6 +51,36 @@
       position: absolute;
       left: 45%;
       top: 2%;
+      display: none;
+    }
+    @include md{
+      display: block;
+    }
+  }
+  .shopping-container-mobile{
+    width: 10%;
+    padding: 0 0.3rem;
+    margin: 0 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    @include sm {
+      position: absolute;
+      left: 45%;
+      top: 2%;
+      display: block;
+    }
+    @include md {
+      display: none;
+    }
+    @include lg {
+      display: none;
+    }
+    @include xl{
+      display: none;
+    }
+    @include xxl{
+      display: none;
     }
   }
   .account-container-mobile{
@@ -48,28 +95,20 @@
       right: 0;
       top: 2%;
       display: block;
+      margin-right: 3%;
     }
     @include md {
       display: none;
     }
-    // 992px window width and more
     @include lg {
-      .account-container-mobile{
         display: none;
-      }
     }
     @include xl{
-      .account-container-mobile{
         display: none;
-      }
     }
-    // 1600px window width and more
     @include xxl{
-      .account-container-mobile{
         display: none;
-      }
     }
-
   }
   .account-container{
     width: 10%;
@@ -82,6 +121,7 @@
       position: absolute;
       right: 0;
       top: 2%;
+      display: none;
     }
   }
 }

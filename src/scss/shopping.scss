@@ -1,0 +1,38 @@
+@import "init";
+.shopping-container{
+  display: flex;
+  text-align: center;
+  .shopping-snapshot{
+    position: absolute;
+    background-color: $light;
+    top: 5%;
+    display: none;
+    width:22rem;
+    z-index: 10;
+    @include xl{
+      top: 8%;
+    }
+    @include xxl{
+      top: 5%;
+      right: 29.7%;
+    }
+  }
+  .shopping-snapshot::after{
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 48%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #FFFFFF;
+  }
+
+}
+.shopping-container:hover .shopping-snapshot{
+  display: block;
+  cursor: pointer;
+}
+.shopping-bag{
+  color:$primary;
+}

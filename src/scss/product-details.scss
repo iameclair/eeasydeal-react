@@ -1,0 +1,38 @@
+@import "init";
+.ProductDetails{
+  padding: 2%;
+}
+.product-section{
+  width: 60%;
+  background-color: #FFFFFF;
+}
+.cart-section{
+  width: 35%;
+  background-color: #FFFFFF;
+}
+.carousel-container-overflow > .carousel > .carousel-inner img{
+  height: 400px;
+}
+
+.items-number{
+  width: 20%;
+}
+.btn-color{
+  background-color: #13215b;
+  color: #f3cb00;
+}
+.btn-color:hover{
+  background-color: #13203b;
+  color: #f3cb00;
+}
+.text-cus{
+  font-weight: bold;
+  font-size: 18px;
+}
+.nav-item-details > .active li a{
+  color: #f3cb00;
+}
+.cart-section{
+  background-color: #FFFFFF;
+  height: 100%;
+}

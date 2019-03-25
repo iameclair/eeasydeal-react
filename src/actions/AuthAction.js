@@ -2,17 +2,28 @@ import {UserConstants} from "../constants/UserConstants";
 import {AuthService} from "../services/AuthService";
 import {ActionUtils} from "./ActionUtils";
 
-
-const login = (user) =>{
+const login = (user, ownProps) =>{
     return dispatch => {
         dispatch(ActionUtils.request(UserConstants.LOGIN_REQUEST, user));
         AuthService.login(user)
             .then(
               user => {
-                 dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, user));
+                  console.log("Login: ", user);
+                  const data ={
+                      user: user,
+                      message: "Login successfully"
+                  };
+                 dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, data));
+                  setTimeout(()=>{
+                      ownProps.history.push(`/`);
+                  }, 3000);
               },
               error => {
-                  dispatch(ActionUtils.failure(UserConstants.LOGIN_FAILURE, error.toString()));
+                  const data ={
+                      error:error,
+                      message: "Email or Password incorrect try again"
+                  };
+                  dispatch(ActionUtils.failure(UserConstants.LOGIN_FAILURE, data));
               }
             );
     };

@@ -1,24 +1,11 @@
 import React, {Component} from 'react'
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
 import {AuthActions} from "../../actions/AuthAction";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from "yup";
 
 class Login extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: {
-                username: '',
-                password: '',
-            },
-            name: null,
-            loggedIn: false,
-            redirect:false
-        };
-    }
 
     _handleSubmit = (values, {setSubmitting}) => {
         const user = {
@@ -29,29 +16,10 @@ class Login extends Component {
         setSubmitting(false);
     };
 
-    componentDidMount() {
-        const {auth} = this.props;
-        if (auth.loggedIn) {
-            setTimeout(()=>{
-                this.setState({redirect: true});
-            }, 3000);
-        }
-    }
-
-    redirectToLandingPage=()=>{
-        setTimeout(()=>{
-            this.setState({redirect: true});
-        }, 3000);
-    };
+    componentDidMount() {}
 
     render() {
-        if(this.state.redirect){
-            return <Redirect to="/"/>
-        }
         const {auth} = this.props;
-        if(auth.loggedIn){
-            this.redirectToLandingPage()
-        }
         const validationSchema = Yup.object().shape({
             username: Yup.string()
                 .email('Email is not valid!')
@@ -75,11 +43,11 @@ class Login extends Component {
                 render={props => {
                     return (
                         <div className="container" id="login">
-                            {auth.error? <div className="alert alert-danger m-2 text-center">
-                                email or password incorrect please try again
+                            {auth.attempt && !auth.loggedIn? <div className="alert alert-danger m-2 text-center">
+                                {auth.message}
                             </div>:<div className="d-none"/>}
-                            {auth.success? <div className="alert alert-success m-2 text-center">
-                                login successfully
+                            {auth.attempt && auth.loggedIn? <div className="alert alert-success m-2 text-center">
+                                {auth.message}
                             </div>:<div className="d-none"/>}
                             <div className="Auth">
                                 <div className="auth-form-title"><h2>Login</h2></div>
@@ -140,10 +108,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         login: (user) => {
-            dispatch(AuthActions.login(user));
+            dispatch(AuthActions.login(user, ownProps));
         }
     }
 };

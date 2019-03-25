@@ -14,7 +14,6 @@ class ProductPagination extends Component{
     }
     componentDidMount() {
         let currentPage = this.props.currentPage;
-        console.log("The component is mounted now");
         this.trackCurrentPage(currentPage);
     }
 
@@ -23,7 +22,6 @@ class ProductPagination extends Component{
     };
 
     getNumberOfPages=(pages, i= 1)=> {
-        console.log("number of pages: ", pages, "index: ", i);
         let ranges = [];
         while (i <= pages){
             ranges.push(i);
@@ -33,7 +31,6 @@ class ProductPagination extends Component{
     };
     handleClick=(page, evt)=>{
         evt.preventDefault();
-        console.log("Handle click: ", page);
         this.gotoPage(page);
     };
     trackCurrentPage = curr =>{

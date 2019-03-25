@@ -1,5 +1,11 @@
 @import "init";
 .account-container{
+  justify-content: center;
+  align-items: center;
+  .account-owner{
+    font-size: 18px;
+
+  }
   .account-snapshot{
       position: absolute;
       background-color: $light;
@@ -9,6 +15,9 @@
       display: none;
       @include xl{
         top: 8%;
+      }
+      @include xxl{
+        top: 5%;
       }
   }
   .account-snapshot::after{

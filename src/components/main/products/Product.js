@@ -13,20 +13,23 @@ class Product extends Component {
                     <div className="pricesection clearfix">
                         <div className="left-section float-left">
                                 <span className="location d-block">
-                                    <i className="fas fa-map-marker"/> <span className="text-muted">1.5km</span>
+                                    <i className="fa fa-map-marker"/> <span className="text-muted">1.5km</span>
                                 </span>
                             <span className="count-down d-block" id="basicUsage">
                                     <div className="d-inline-block mr-1" style={{color: '#f3cb00'}}>
                                         <i className="fa fa-clock"/>
                                     </div>
                                      <div className="d-inline-block text-muted">
-                                         <CountdownTimer count={this.props.expiryDate} size={10}
-                                                         color={"#6c757d"}/></div>
+                                         <i className="fa fa-clock-o"/>&nbsp;
+                                         <span className="d-inline-block"><CountdownTimer count={this.props.expiryDate} size={10}
+                                                         color={"#6c757d"}/></span>
+                                     </div>
                                 </span>
                         </div>
                         <div className="right-section float-right">
                             <div className="price">
                                 <span className="d-inline-block rrp-value"><s>R{this.props.actualPrice} </s> </span>
+                                <br/>
                                 <span className="d-inline-block sale-value"> R{this.props.discount}</span>
                             </div>
                             <div className="review">

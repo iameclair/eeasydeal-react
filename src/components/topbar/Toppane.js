@@ -28,37 +28,43 @@ class Toppane extends PureComponent {
                 <AccountMobile/>
                 <div className="container">
                     <div className="row">
-                        <div className="mobile-navigation-container">
-                            <span className="mobile-nav" onClick={this.openNav}>&#9776;</span>
-                        </div>
-                        <div className="logo-container">
-                            <img
-                                src="https://res.cloudinary.com/djmpl51mn/image/upload/v1549559554/eeasydeal/White_logo_-_no_background-1.png"
-                                alt="logo"/>
-                        </div>
-                        <div className="search-container">
-                            <SearchBar/>
-                        </div>
-                        {
-                            (this.state.loggedIn ?
-                                    <div className="shopping-container">
-                                        <ShoppingBag/>
-                                    </div> :
-                                    <div className="shopping-container">
-                                        <ShoppingBag/>
-                                    </div>
-                            )
-                        }
-                        <div className="account-container">
-                            <i className="fa fa-user-circle fa-2x"/>
-                            <div className="account-snapshot">
-                                <Account/>
+                            <div className="mobile-navigation-container">
+                                <span className="mobile-nav" onClick={this.openNav}>&#9776;</span>
+                            </div>
+                            <div className="logo-container">
+                                <img
+                                    src="https://res.cloudinary.com/djmpl51mn/image/upload/v1549559554/eeasydeal/White_logo_-_no_background-1.png"
+                                    alt="logo"/>
+                            </div>
+                            <div className="search-container">
+                                <SearchBar/>
+                            </div>
+                            <div className="shopping-container">
+                                <i className="fa fa-shopping-bag fa-2x"/>
+                                <div className="shopping-snapshot">
+                                    <ShoppingBag/>
+                                </div>
+                            </div>
+                            <div className="shopping-container-mobile">
+                                <i className="fa fa-shopping-bag"/>
+                            </div>
+                            <div className="account-container d-flex">
+                                {
+                                    this.state.loggedIn? <span>
+                                        <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Eclair</span>
+                                        </span>:
+                                        <span>
+                                            <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Login</span>
+                                        </span>
+                                }
+                                <div className="account-snapshot">
+                                    <Account/>
+                                </div>
+                            </div>
+                            <div className="account-container-mobile">
+                                <i className="fa fa-user-circle" onClick={this.openAccount}/>
                             </div>
                         </div>
-                        <div className="account-container-mobile">
-                            <i className="fa fa-user-circle fa-2x" onClick={this.openAccount}/>
-                        </div>
-                    </div>
                 </div>
             </div>
         )

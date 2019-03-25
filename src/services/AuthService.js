@@ -13,7 +13,10 @@ const login = (user) => {
             if (user.token) {
                 localStorage.setItem('user', JSON.stringify(user));
             }
-            return user;
+            return Promise.resolve(user);
+        }, error =>{
+            console.log("There's been an error: ",error);
+            return Promise.reject(new Error(error));
         });
 };
 
