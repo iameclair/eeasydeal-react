@@ -16,7 +16,27 @@ const login = (user, ownProps) =>{
                  dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, data));
                   setTimeout(()=>{
                       ownProps.history.push(`/`);
-                  }, 3000);
+                  }, 5000);
+                  const userId = data.user.id;
+                  const payload ={
+                      message: "fetch profile successfully",
+                  };
+                  dispatch(ActionUtils.request(UserConstants.FETCH_PROFILE_REQUEST, payload));
+                  AuthService.fetchProfile(userId)
+                      .then(
+                          profile =>{
+                              console.log("Fetching profile: ", profile);
+                              const payload ={
+                                  profile: profile,
+                                  message: "fetch profile successfully",
+                              };
+                              localStorage.setItem('profile', JSON.stringify(profile));
+                              dispatch(ActionUtils.success(UserConstants.FETCH_PROFILE_SUCCESS, payload));
+                          },
+                          error =>{
+                              dispatch(ActionUtils.failure(UserConstants.FETCH_PROFILE_FAILURE, error));
+                          }
+                      )
               },
               error => {
                   const data ={
@@ -43,13 +63,16 @@ const logout = (token) =>{
            )
    }
 };
-const activateAccount = (activate) =>{
+const activateAccount = (activate, ownProps) =>{
     return dispatch => {
         dispatch(ActionUtils.request(UserConstants.ACTIVATE_REQUEST, activate));
         AuthService.activateAccount(activate)
             .then(
                 success => {
                     dispatch(ActionUtils.success(UserConstants.ACTIVATE_SUCCESS, success));
+                    setTimeout (()=>{
+                        ownProps.history.push("/login");
+                    }, 4000)
                 },
                 error => {
                     dispatch(ActionUtils.failure(UserConstants.ACTIVATE_FAILURE, error.toString()));

@@ -1,18 +1,20 @@
 import {UserConstants} from "../../constants/UserConstants";
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initState = user ? {
+let authParams = JSON.parse(localStorage.getItem('authParams'));
+let profile = JSON.parse(localStorage.getItem('profile'));
+const initState = authParams ? {
     loading:false,
     loggedIn: true,
     message:null,
     attempt: false,
-    user:user
+    profile: profile,
+    authParams:authParams
 } : {
     loading:false,
     loggedIn: false,
     attempt: false,
     message:null,
-    user: {}
+    authParams: {}
 };
 
 const authReducer = (state = initState, action) =>{
@@ -29,7 +31,7 @@ const authReducer = (state = initState, action) =>{
                 loggedIn: true,
                 message:action.payload.message,
                 attempt: true,
-                user: action.payload.user
+                authParams: action.payload.authParams
             };
         case UserConstants.LOGIN_FAILURE:
             return {
@@ -39,7 +41,28 @@ const authReducer = (state = initState, action) =>{
                 attempt:true,
                 message:action.payload.message
             };
-
+        case UserConstants.FETCH_PROFILE_REQUEST:
+            return {
+                ...state,
+                loading:true,
+                message: action.payload.message,
+                attempt:true,
+            };
+        case UserConstants.FETCH_PROFILE_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                message: action.payload.message,
+                attempt:true,
+                profile: action.payload.profile,
+            };
+        case UserConstants.FETCH_PROFILE_FAILURE:
+            return {
+                ...state,
+                loading:false,
+                message: action.payload.message,
+                attempt:true,
+            };
         case UserConstants.LOGOUT_REQUEST:
             return {
                 ...state,

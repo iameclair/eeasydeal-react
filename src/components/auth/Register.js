@@ -4,13 +4,8 @@ import {RegisterAction} from "../../actions/RegisterAction";
 import {connect} from "react-redux"
 import * as Yup from "yup";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
-import {Redirect} from "react-router-dom";
 
 class Register extends Component {
-    state = {
-        redirect: false
-    };
-
     _handleSubmit = (values,
                      {props = this.props, setSubmitting}) => {
         const user = {
@@ -29,23 +24,8 @@ class Register extends Component {
         setSubmitting(false);
     };
 
-    redirectToLogin = () => {
-        const {registration} = this.props;
-        if (registration.success) {
-            setTimeout(() => {
-                this.setState({redirect: true});
-            }, 3000);
-        }
-    };
-
     render() {
-        if (this.state.redirect) {
-            return <Redirect to="/login"/>;
-        }
         const {registration} = this.props;
-        if (registration.success) {
-            this.redirectToLogin();
-        }
         const validationSchema = Yup.object().shape({
             first_name: Yup.string()
                 .required('First name is required!'),
@@ -78,11 +58,11 @@ class Register extends Component {
                 render={props => {
                     return (
                         <div className="container" id="register">
-                            {registration.error ? <div className="alert alert-danger m-2 text-center">
-                                Unable to register the user
+                            {registration.attempt && !registration.success ? <div className="alert alert-danger m-2 text-center">
+                                {registration.message}
                             </div> : <div className="d-none"/>}
-                            {registration.success ? <div className="alert alert-success m-2 text-center">
-                                registration successfully! Please check your email to activate your account before login
+                            {registration.attempt && registration.success ? <div className="alert alert-success m-2 text-center">
+                                {registration.message}
                             </div> : <div className="d-none"/>}
                             <div className="Auth">
                                 <div className="auth-form-title"><h2>Register</h2></div>
@@ -151,10 +131,10 @@ class Register extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createAccount: (user) => {
-            dispatch(RegisterAction.register(user));
+            dispatch(RegisterAction.register(user, ownProps));
         }
     }
 };

@@ -33,7 +33,7 @@ class App extends Component {
                           <RouteGuards.OnlyNonAuth path="/forget-password" component={ForgetPassword}/>
                           <RouteGuards.OnlyNonAuth path="/password-reset" component={ResetPassword}/>
                           {/*<Route path="/basket" component={Basket}/>*/}
-                          <Route path="/activate/:uid/:token" component={ActivateAccount}/>
+                          <Route path="/v1/api/auth/users/activate/:uid/:token" component={ActivateAccount}/>
                           <RouteGuards.RequireAuth path="/account/:page" component={MyAccount}/>
                           <Route component={Landing} />
                       </Switch>

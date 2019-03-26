@@ -2,126 +2,107 @@
 .Toppane{
   background-color: $primary;
   color: $secondary;
-  padding: 1rem 0 0 0.5rem;
+  padding: 1%;
   justify-content: center;
-  @include sm{
-    margin: 0 0 2% 0;
-    padding: 1% 1% 2%;
-  }
-  @include xl{
-    padding: 1% 0 0 0;
-  }
-  .row{
+  .toppane-container{
+    position: relative;
+    display: flex;
+    align-items: center;
     @include sm{
-      .mobile-navigation-container{
-        margin-left: 2%;
-        .mobile-nav{
-          font-size: 24px;
-        }
+      .logo-container{
+        width: 8rem;
+        position: absolute;
+        top: 15%;
+        left:13%;
+      }
+      .search-container{
+        display: none;
+      }
+      .search-container-mobile{
+        position: absolute;
+        left: 55%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        top: 15%;
+      }
+      .search-container-mobile-close{
+        position: absolute;
+        left: 55%;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        top: 15%;
+        display: none;
+      }
+      .shopping-container{
+        display: none;
+      }
+      .shopping-container-mobile{
+        position:absolute;
+        left:75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        top: 15%;
+      }
+      .account-container{
+        display: none;
+      }
+      .account-container-mobile{
+        position:absolute;
+        left:90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        top: 15%;
       }
     }
-  }
-  .logo-container{
-    width: 15%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    @include sm {
-      display: none;
-    }
-  }
-  .search-container{
-    width: 60%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    @include sm {
-      width: 100%;
-    }
-  }
-  .shopping-container{
-    width: 10%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    @include sm {
-      position: absolute;
-      left: 45%;
-      top: 2%;
-      display: none;
-    }
-    @include md{
-      display: block;
-    }
-  }
-  .shopping-container-mobile{
-    width: 10%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    @include sm {
-      position: absolute;
-      left: 45%;
-      top: 2%;
-      display: block;
-    }
-    @include md {
-      display: none;
-    }
-    @include lg {
-      display: none;
-    }
-    @include xl{
-      display: none;
-    }
-    @include xxl{
-      display: none;
-    }
-  }
-  .account-container-mobile{
-    width: 10%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    @include sm {
-      position: absolute;
-      right: 0;
-      top: 2%;
-      display: block;
-      margin-right: 3%;
-    }
-    @include md {
-      display: none;
-    }
-    @include lg {
+    @include lg{
+      .logo-container {
+        width: 15%;
+        padding: 0 0.3rem;
+        margin: 0 0.2rem;
+      }
+      .search-container-mobile{
         display: none;
-    }
-    @include xl{
+      }
+      .shopping-container-mobile{
         display: none;
-    }
-    @include xxl{
+      }
+      .account-container-mobile{
         display: none;
-    }
-  }
-  .account-container{
-    width: 10%;
-    padding: 0 0.3rem;
-    margin: 0 0.2rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    @include sm {
-      position: absolute;
-      right: 0;
-      top: 2%;
-      display: none;
+      }
+      .search-container-mobile-close{
+        display: none;
+      }
+      .search-container{
+        width: 55%;
+        padding: 0 0.3rem;
+        margin: 0 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+      .shopping-container{
+        width: 8%;
+        padding: 0 0.3rem;
+        margin: 0 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+      .account-container{
+        width: 17%;
+        padding: 0 0.3rem;
+        margin: 0 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
     }
   }
 }

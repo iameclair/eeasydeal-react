@@ -1,19 +1,14 @@
 import React, {PureComponent} from 'react';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 class Account extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loggedIn: false
-        }
-    }
-
     render() {
+        const {auth} = this.props;
         return (
             <div className="account">
                 {
-                    !this.state.loggedIn ?
+                    !auth.loggedIn ?
                         <div className="account-login-register">
                             <span className="clickable-link"><Link to="/login">Log In</Link></span>
                             <span className="vertical-separator">|</span>
@@ -52,5 +47,9 @@ class Account extends PureComponent {
         )
     }
 }
-
-export default Account;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth,
+    }
+};
+export default connect(mapStateToProps)(Account);

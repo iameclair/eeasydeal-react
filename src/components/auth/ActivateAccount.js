@@ -5,10 +5,6 @@ import {Redirect} from "react-router-dom";
 
 
 class ActivateAccount extends Component{
-    state = {
-        redirect: false
-    };
-
     componentDidMount() {
         const {match:{params}}= this.props;
         const activate = {
@@ -18,23 +14,8 @@ class ActivateAccount extends Component{
         this.props.accountActivation(activate);
     }
 
-    redirectToLogin = () =>{
-        const {auth} = this.props;
-        if(auth.active){
-            setTimeout(()=>{
-                this.setState({redirect: true});
-            }, 4000);
-        }
-    };
-
     render() {
-        if(this.state.redirect){
-            return <Redirect to="/login"/>
-        }
         const {auth} = this.props;
-        if(auth.active){
-            this.redirectToLogin();
-        }
         return(
             <div className="container">
                 {auth.active?<div>
@@ -52,10 +33,10 @@ class ActivateAccount extends Component{
         )
     }
 }
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch, ownProps) =>{
     return{
         accountActivation:(activate)=>{
-            dispatch(AuthActions.activateAccount(activate))
+            dispatch(AuthActions.activateAccount(activate, ownProps))
         }
     }
 };

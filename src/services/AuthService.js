@@ -9,17 +9,20 @@ const login = (user) => {
     };
     return fetch(baseUrl+'/v1/api/auth/token-auth', requestOptions)
         .then(handleResponse)
-        .then(user => {
-            if (user.token) {
-                localStorage.setItem('user', JSON.stringify(user));
+        .then(authParams => {
+            if (authParams.token) {
+              localStorage.setItem('authParams', JSON.stringify(authParams));
             }
-            return Promise.resolve(user);
+            return Promise.resolve(authParams);
         }, error =>{
             console.log("There's been an error: ",error);
             return Promise.reject(new Error(error));
         });
 };
-
+async function fetchProfile(userId){
+    const response = await fetch(`${baseUrl}/v1/api/auth/sellers/${userId}`);
+    return await handleResponse(response);
+}
 const logout = (token) =>{
     const requestOptions = {
         method: 'GET',
@@ -85,6 +88,7 @@ const activateAccount = (activate) => {
 
 export const AuthService = {
     login,
+    fetchProfile,
     logout,
     resetPassword,
     activateAccount,

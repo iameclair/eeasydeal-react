@@ -19,8 +19,6 @@
   @include sm {
       display: none;
   }
-  @include md {
-  }
   // 992px window width and more
   @include lg {
   }
@@ -32,7 +30,7 @@
 }
 //Mobile navigation
 .mobile-navigation-container{
-  @include md{
+  @include lg{
     display: none;
   }
   .mobile-nav{
@@ -47,7 +45,7 @@
   @include sm {
     display: block;
   }
-  @include md {
+  @include lg {
     padding: 0;
     display: none;
   }

@@ -2,19 +2,20 @@
 .shopping-container{
   display: flex;
   text-align: center;
+  position: relative;
   .shopping-snapshot{
     position: absolute;
     background-color: $light;
-    top: 5%;
     display: none;
-    width:22rem;
-    z-index: 10;
-    @include xl{
-      top: 8%;
+    min-width:22rem;
+    z-index: 1;
+    @media only screen and (min-width:992px){
+      top: 115%;
+      left: -135%;
     }
-    @include xxl{
-      top: 5%;
-      right: 29.7%;
+    @media only screen and (min-width:1200px){
+      top: 115%;
+      left: -108%;
     }
   }
   .shopping-snapshot::after{

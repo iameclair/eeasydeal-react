@@ -1,9 +1,9 @@
 import {UserConstants} from "../../constants/UserConstants";
 
 const initialState ={
-    registering: false,
+    attempt: false,
     success: false,
-    error: false,
+    message: null,
 };
 
 const registerReducer = (state = initialState, action) =>{
@@ -11,19 +11,21 @@ const registerReducer = (state = initialState, action) =>{
         case UserConstants.REGISTER_REQUEST:
             return {
                 ...state,
-                registering: true ,
+                attempt: true ,
             };
         case UserConstants.REGISTER_SUCCESS:
             return {
                 ...state,
-                registering:true,
+                attempt:true,
                 success: true,
+                message: action.payload.message,
             };
         case UserConstants.REGISTER_FAILURE:
             return {
                 ...state,
-                registering: false,
-                error: true
+                attempt: true,
+                success:false,
+                message: action.payload.message
             };
         default:
             return state
