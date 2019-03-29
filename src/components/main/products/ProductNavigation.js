@@ -55,20 +55,24 @@ class ProductNavigation extends PureComponent {
     render() {
         const {product} = this.props;
         return (
-            <div>
+            <div className="ProductNavigation">
                 <nav className="nav nav-pills nav-fill">
-                    <li className="nav-item m-1 nav-item-details">
-                        <p className="nav-link active nav-link-color"
+                    <li className="nav-item m-1 nav-item-details active">
+                        <i className="fa fa-info-circle" onClick={this.handleDescription}/>
+                        <p className="nav-link lg-nav active nav-link-color"
                            onClick={this.handleDescription}>Description</p>
                     </li>
                     <li className="nav-item m-1 nav-link-color">
-                        <p className="nav-link" onClick={this.handleDeal}>About the Deal</p>
+                        <i className="fa fa-exclamation-circle" onClick={this.handleDeal}/>
+                        <p className="nav-link lg-nav" onClick={this.handleDeal}>About the Deal</p>
                     </li>
                     <li className="nav-item m-1 nav-link-color">
-                        <p className="nav-link" onClick={this.handleLocation}>Location</p>
+                        <i className="fa fa-map-marker" onClick={this.handleLocation}/>
+                        <p className="nav-link lg-nav" onClick={this.handleLocation}>Location</p>
                     </li>
                     <li className="nav-item m-1 nav-link-color">
-                        <p className="nav-link" onClick={this.handleReview}>Reviews</p>
+                        <i className="fa fa-star" onClick={this.handleReview}/>
+                        <p className="nav-link lg-nav" onClick={this.handleReview}>Reviews</p>
                     </li>
                 </nav>
                 <div className="content mt-2 p-3">

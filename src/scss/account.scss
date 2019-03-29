@@ -9,26 +9,26 @@
   .account-snapshot{
       position: absolute;
       background-color: $light;
-      top: 5%;
       width:22rem;
       z-index: 10;
       display: none;
-      @include xl{
-        top: 8%;
-      }
-      @include xxl{
-        top: 5%;
-      }
+      top:120%;
+      right: 0;
   }
   .account-snapshot::after{
     content: " ";
     position: absolute;
     bottom: 100%;
-    left: 48%;
     width: 0;
     height: 0;
     border: 10px solid transparent;
     border-bottom-color: #FFFFFF;
+    @include lg{
+      left: 60%;
+    }
+    @include xl{
+      left: 54%;
+    }
   }
 }
 .account-container:hover .account-snapshot{

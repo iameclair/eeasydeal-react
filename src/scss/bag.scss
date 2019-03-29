@@ -1,0 +1,52 @@
+/*@import url('https://fonts.googleapis.com/css?family=Righteous|lucida grande');*/
+@import "init";
+.Bag{
+  font-family: 'lucida grande', sans-serif;
+  width: 50%;
+  .bag-title{
+    font-family: 'lucida grande', sans-serif;
+    font-size: 18px;
+    color: $primary;
+  }
+  .bag-content{
+    .bag-item{
+      .bag-item-content{
+        width: 100%;
+        .bag-item-content-price{
+          color: #13215b;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.delete-bag-item{
+  font-size: 16px;
+  font-weight: bolder;
+}
+.form-control-bag{
+  border: 0;
+}
+.bag-content-subtotal{
+  color: #13215b;
+}
+.bag-summary{
+  width: 30%;
+  border-radius: 0;
+}
+.btn-checkout{
+  background-color: #13215b;
+  border: #13215b;
+  color: #f3cb00;
+}
+
+@media only screen and (max-width: 900px){
+  .Bag{
+    width: 80%;
+  }
+  .bag-summary{
+    width: 80%;
+    border-radius: 0;
+  }
+}

@@ -17,9 +17,21 @@
         flex-wrap: wrap;
         .product-item-container{
           background-color: $light;
-          width: 18%;
-          height: 400px;
-          margin: 1%;
+          @include lg{
+            width: 31%;
+            height: 350px;
+            margin: 1%;
+          }
+          @include xl{
+            width: 22%;
+            height: 350px;
+            margin: 1%;
+          }
+          @include xxl{
+            width: 18%;
+            height: 400px;
+            margin: 1%;
+          }
         }
       }
       .advert-deals-section{

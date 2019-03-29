@@ -1,15 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import Slider from "react-slick";
 
-export default class Carousel extends PureComponent {
+export default class Carousel extends Component {
     render() {
         const settings = {
             dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrow:true
+            autoplay: true,
         };
         return (
             <div className="Carousel">

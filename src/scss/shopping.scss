@@ -9,24 +9,24 @@
     display: none;
     min-width:22rem;
     z-index: 1;
-    @media only screen and (min-width:992px){
-      top: 115%;
-      left: -135%;
-    }
-    @media only screen and (min-width:1200px){
-      top: 115%;
-      left: -108%;
-    }
+    top: 130%;
+    right: 0;
   }
   .shopping-snapshot::after{
     content: " ";
     position: absolute;
     bottom: 100%;
-    left: 48%;
+
     width: 0;
     height: 0;
     border: 10px solid transparent;
     border-bottom-color: #FFFFFF;
+    @include lg{
+      left: 86.5%;
+    }
+    @include xl{
+      left: 84.5%;
+    }
   }
 
 }
@@ -36,4 +36,24 @@
 }
 .shopping-bag{
   color:$primary;
+  ul{
+    li{
+      list-style: none;
+    }
+    .item{
+      padding: 2%;
+      margin: 1% 0;
+      .item-icon{
+        width: 30%;
+      }
+      .item-description{
+        width: 70%;
+        .item-name{
+          display: block;
+          text-align: left;
+          padding: 0 0 0 1%;
+        }
+      }
+    }
+  }
 }

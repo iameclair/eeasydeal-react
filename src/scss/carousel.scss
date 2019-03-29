@@ -1,11 +1,13 @@
 @import "init";
 .Carousel{
-  width: 100%;
-  margin-bottom: 2%;
+  width: 70%;
+  margin: 1% auto 2%;
+  //background-color:$secondary;
+  padding: 0px;
   .carousel-item{
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 400px;
     width: 80%;
 
     img{

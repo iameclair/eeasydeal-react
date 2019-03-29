@@ -109,8 +109,8 @@ class ProductShopping extends PureComponent{
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="items-number p-1 mt-2 mb-2">
-                        <label>
-                            <span>Quantity?</span>
+                        <span className="d-inline-block">Qty</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span className="d-inline-block">
                             <select value={this.state.value} onChange={this.handleChange}
                                     className="custom-select" id="quantity">
                                 <option value="1">1</option>
@@ -119,11 +119,12 @@ class ProductShopping extends PureComponent{
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
-                        </label>
+                        </span>
                     </div>
                     <button type="submit"
                             className="btn btn-color btn-lg btn-block">
-                        Add to cart <i className="fa fa-shopping-cart"/>
+                        <i className="fa fa-shopping-bag"/>&nbsp;
+                        Add to bag
                     </button>
                 </form>
             </div>

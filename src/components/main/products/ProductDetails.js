@@ -26,6 +26,7 @@ class ProductDetails extends Component {
         let productId = params.id;
         this.props.fetchProductById(productId);
     }
+
     render() {
         const {basket} = this.props;
         const {product} = this.props;
@@ -40,32 +41,31 @@ class ProductDetails extends Component {
 
         return (
             <div className="ProductDetails">
-                <div className="container">
-                    <div className="row">
-                        <div className="product-section float-left align-self-start m-1 p-3">
-                           <ProductPresentation product={product} location={location} images={images}/>
-                            <div className="product-details-section mt-5 shadow">
+                <div className="container clearfix">
+                    <div className="product-section float-left">
+                        <ProductPresentation product={product} location={location} images={images}/>
+                        <div className="product-details-section mt-5 shadow">
                             <ProductNavigation product={product}/>
-                            </div>
                         </div>
-                        <div className="cart-section float-right align-self-start m-1 p-3">
-                            <div className="performance-section border-bottom d-flex justify-content-between align-items-center p-1">
-                               <ProductStats/>
-                            </div>
-                            <div className="addtocart-section p-1 mt-5 mb-5 border-bottom">
-                              <ProductShopping product={product}/>
-                            </div>
-                            <div className="social-media">
+                    </div>
+                    <div className="cart-section shadow float-right">
+                        <div
+                            className="performance-section border-bottom d-flex justify-content-center align-items-center">
+                            <ProductStats/>
+                        </div>
+                        <div className="add-to-cart-section p-1 mt-5 mb-5 border-bottom">
+                            <ProductShopping product={product}/>
+                        </div>
+                        <div className="social-media">
                                 <span className="d-inline-block m-1 p-1">
                                     <i className="fa fa-facebook fa-2x"/>
                                 </span>
-                                    <span className="d-inline-block m-1 p-1">
+                            <span className="d-inline-block m-1 p-1">
                                      <i className="fa fa-twitter fa-2x"/>
                                 </span>
-                                    <span className="d-inline-block m-1 p-1">
+                            <span className="d-inline-block m-1 p-1">
                                      <i className="fa fa-instagram fa-2x"/>
                                 </span>
-                            </div>
                         </div>
                     </div>
                 </div>

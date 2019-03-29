@@ -1,38 +1,226 @@
 @import "init";
-.ProductDetails{
-  padding: 2%;
-}
-.product-section{
-  width: 60%;
-  background-color: #FFFFFF;
-}
-.cart-section{
-  width: 35%;
-  background-color: #FFFFFF;
-}
-.carousel-container-overflow > .carousel > .carousel-inner img{
-  height: 400px;
-}
+.ProductDetails {
+  padding: 1%;
+  @include sm {
+    .product-section {
+      width: 100%;
+      .ProductPresentation {
+        .product-presentation-header {
+          h2 {
+            font-size: 22px;
+          }
+          h5 {
+            font-size: 14px;
+            color: $muted;
+          }
+          h6 {
+            color: $muted;
+            font-size: 12px;
+          }
+        }
+        .carousel-container-overflow {
+          .carousel {
+            .carousel-inner {
+              height: 200px;
+              img {
+                width: 100%;
+                height: 200px;
+              }
+              @include rwd(400) {
+                height: 300%;
+                img {
+                  height: 300px;
+                }
+              }
+              @include rwd(500) {
+                height: 350%;
+                img {
+                  height: 350px;
+                }
+              }
+            }
+          }
 
-.items-number{
-  width: 20%;
-}
-.btn-color{
-  background-color: #13215b;
-  color: #f3cb00;
-}
-.btn-color:hover{
-  background-color: #13203b;
-  color: #f3cb00;
-}
-.text-cus{
-  font-weight: bold;
-  font-size: 18px;
-}
-.nav-item-details > .active li a{
-  color: #f3cb00;
-}
-.cart-section{
-  background-color: #FFFFFF;
-  height: 100%;
+        }
+        .carousel-thumbnail-container-overflow {
+          display: none;
+        }
+      }
+      .ProductNavigation {
+        @include sm {
+          .nav {
+            background-color: $primary;
+            padding: 1%;
+            color: $secondary;
+            .active {
+              border-bottom: 2px solid $secondary;
+            }
+            .nav-item {
+              padding: 1%;
+              .lg-nav {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cart-section {
+      width: 100%;
+      .performance-section {
+        font-size: 12px;
+        margin: 2% 0 0 0;
+        color: $primary;
+        .ProductStats {
+          width: 100%;
+          padding: 2% 1% 1% 1%;
+          .stat-item {
+            margin: 0 1% 0 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1%;
+          }
+        }
+      }
+      .add-to-cart-section {
+        .ProductShopping {
+          form {
+            .items-number {
+              .custom-select {
+                border: none;
+              }
+            }
+            button {
+              background-color: $primary;
+              color: $secondary;
+            }
+          }
+        }
+      }
+      .social-media {
+        color: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  @include lg {
+    .product-section {
+      width: 60%;
+      .ProductPresentation {
+        .product-presentation-header {
+          h2 {
+            font-size: 22px;
+          }
+          h5 {
+            font-size: 14px;
+            color: $muted;
+          }
+          h6 {
+            color: $muted;
+            font-size: 12px;
+          }
+        }
+        .carousel-container-overflow {
+          .carousel {
+            .carousel-inner {
+              height: 200px;
+              img {
+                width: 100%;
+                height: 200px;
+              }
+              @include rwd(400) {
+                height: 300%;
+                img {
+                  height: 300px;
+                }
+              }
+              @include rwd(500) {
+                height: 350%;
+                img {
+                  height: 350px;
+                }
+              }
+            }
+          }
+
+        }
+        .carousel-thumbnail-container-overflow {
+          display: block;
+          .carousel{
+            .carousel-inner{
+              display: flex;
+              flex-wrap: nowrap;
+              overflow-x: auto;
+              .carousel-thumbnail-item{
+                flex: 0 0 auto;
+                width: 100px;
+              }
+            }
+          }
+
+        }
+      }
+      .ProductNavigation {
+        @include sm {
+          .nav {
+            background-color: $primary;
+            padding: 1%;
+            color: $secondary;
+            .active {
+              border-bottom: 2px solid $secondary;
+            }
+            .nav-item {
+              padding: 1%;
+              .lg-nav {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cart-section {
+      width: 38%;
+      .performance-section {
+        margin: 2% 0 0 0;
+        color: $primary;
+        font-size: 12px;
+        .ProductStats {
+          width: 100%;
+          padding: 2% 1% 1% 1%;
+          .stat-item {
+            margin: 0 1% 0 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1%;
+          }
+        }
+      }
+      .add-to-cart-section {
+        .ProductShopping {
+          form {
+            .items-number {
+              .custom-select {
+                border: none;
+              }
+            }
+            button {
+              background-color: $primary;
+              color: $secondary;
+            }
+          }
+        }
+      }
+      .social-media {
+        color: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
 }

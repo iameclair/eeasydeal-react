@@ -24,8 +24,8 @@ class ProductPresentation extends PureComponent {
         const {location} = this.props;
         const {images} = this.props;
         return (
-            <div className="ProductPresentation">
-                <div>
+            <div className="ProductPresentation shadow p-2">
+                <div className="product-presentation-header">
                     <h2 style={{color: "#13215b"}}>{product.result.name}</h2>
                     <h5>{location.name}</h5>
                     <h6>{product.result.short_description}</h6>
