@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import Profile from "./Profile";
-import {Link} from "react-router-dom";
-import Password from "./Mypurchase";
+import Password from "./Password";
+import AccountNavigation from "./AccountNavigation";
+import AccountContent from "./AccountContent";
 class MyAccount extends Component{
     state={
         showMyAccountPage:false,
         showMyPasswordPage: false,
         showMyPurchasePage: false,
-        showWishlistPage: false
+        showWishlistPage: false,
+        mounted: false,
     };
     componentDidMount(){
         const {match: {params}} = this.props;
+        console.log("Component did unmount: ", params);
         let page = params.page;
         if(page === "myaccount"){
             this.setState({
@@ -22,37 +25,25 @@ class MyAccount extends Component{
                 showMyPasswordPage: true,
             })
         }
+        this.setState({mounted: true});
     }
-
+    showPageContent=(page)=>{
+        return  <AccountContent page={page}/>
+    };
     render() {
+        const {match: {params}} = null;
         return(
-            <div className="Account m-2">
+            <div className="MyAccount m-2">
                 <div className="container">
                     <div className="row">
                         <div className="account-navigation col col-sm-3 col-md-3 col-lg-3">
-                            <nav className="nav flex-column">
-                                <div className="nav-item p-2 active">
-                                    <Link to="myaccount" className="nav-link active" href="#">
-                                        <span><i className="fa fa-user-circle fa-2x"/></span>&nbsp;&nbsp; My profile</Link>
-                                </div>
-                                <div className="nav-item p-2">
-                                    <Link to="mypassword" className="nav-link" href="#">
-                                        <span><i className="fa fa-user-secret fa-2x"/></span>&nbsp;&nbsp; My password</Link>
-                                </div>
-                                <div className="nav-item p-2">
-                                    <Link to="mypurchases" className="nav-link" href="#">
-                                        <span> <i className="fa fa-shopping-basket fa-2x"/></span>&nbsp;&nbsp; My purchases</Link>
-                                </div>
-                                <div className="nav-item p-2">
-                                    <Link to="mywishlist" className="nav-link" href="#">
-                                        <span> <i className="fa fa-heart fa-2x"/></span>&nbsp;&nbsp; My wish list</Link>
-                                </div>
-                            </nav>
+                           <AccountNavigation/>
                         </div>
                         <div className="account-content col col-sm-9 col-md-9 col-lg-9">
+                            {this.state.mounted? this.showPageContent(params.page):<div className="d-none"/>}
                             {this.state.showMyAccountPage? <Profile/>:<div/>}
                             {this.state.showMyPasswordPage? <Password/>:<div/>}
-                            {/*{this.state.showMyPurchasePage? <Purchase/>:<div/>}*/}gi
+                            {/*{this.state.showMyPurchasePage? <Purchase/>:<div/>}*/}
                             {/*{this.state.showWishlistPage? <Wishlist/>:<div/>}*/}
                         </div>
                     </div>

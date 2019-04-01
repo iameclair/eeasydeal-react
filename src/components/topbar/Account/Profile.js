@@ -34,7 +34,7 @@ class Profile extends Component {
                         <div className="form-row">
                             <div className="col-md-6 mb-3">
                                 <label htmlFor="Address">Address</label>
-                                <input type="text" className="form-control" placeholder="City"/>
+                                <input type="text" className="form-control" placeholder="Address"/>
                             </div>
                             <div className="col-md-3 mb-3">
                                 <label htmlFor="city">City</label>
@@ -49,7 +49,7 @@ class Profile extends Component {
                                 <input type="text" className="form-control" placeholder="Country" required/>
                             </div>
                         </div>
-                        <button className="btn btn-primary" type="submit">Update</button>
+                        <button className="btn btn-primary btn-block" type="submit">Update</button>
                     </form>
                 </div>
             </div>

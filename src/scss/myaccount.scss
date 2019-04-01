@@ -1,0 +1,28 @@
+@import "init";
+.MyAccount{
+  @include sm{
+    .account-navigation{
+      width: 100%;
+    }
+    .account-content{
+      width: 100%;
+    }
+  }
+  @include lg{
+    .account-navigation{
+      .AccountNavigation{ .nav{ .nav-item{
+        text-align: left;
+        border-bottom: 1px solid #cccccc;
+        a{
+          color: $primary;
+        }
+        a:hover{
+          color: $secondary;
+        }
+      } } }
+    }
+  }
+  @include xl{
+
+  }
+}

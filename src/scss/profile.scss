@@ -1,0 +1,43 @@
+@import "init";
+.Profile{
+  color: $primary;
+  a{
+    color: $muted;
+  }
+  input[type="text"], input[type="password"], input[type="email"]{
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid $primary;
+  }
+  .profile-personal-info{
+    .btn{
+      background-color: $primary;
+      color: $secondary;
+      border-color: $primary-dark;
+    }
+    .btn:hover{
+      background-color: $primary-dark;
+      color: $light;
+    }
+  }
+}
+.Password{
+  color: $primary;
+  a{
+    color: $muted;
+  }
+  input[type="text"], input[type="password"], input[type="email"]{
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid $primary;
+  }
+  .btn{
+    background-color: $primary;
+    color: $secondary;
+    border-color: $primary-dark;
+  }
+  .btn:hover{
+    background-color: $primary-dark;
+    color: $light;
+  }
+}

@@ -30,6 +30,15 @@
       left: 54%;
     }
   }
+  .account{
+    .account-menu-container{
+      .btn-menu:hover{
+        background-color: $primary;
+        color: $secondary;
+        text-decoration: none;
+      }
+    }
+  }
 }
 .account-container:hover .account-snapshot{
     display: block;

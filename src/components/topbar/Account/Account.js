@@ -23,7 +23,7 @@ class Account extends PureComponent {
                             <Link to={`/account/${"mypurchase"}`}>
                                 <span className="d-block m-1 p-2 border-bottom btn-menu">
                                     <span className="badge badge-light">
-                                        <i className="fa fa-cart-plus"/>
+                                        <i className="fa fa-shopping-bag"/>
                                     </span> &nbsp; My purchase
                                 </span>
                             </Link>
@@ -37,7 +37,7 @@ class Account extends PureComponent {
                             <Link to={`/account/logout`}>
                                 <span className="d-block m-1 p-2 btn-menu" onClick={this.logout}>
                                     <span className="badge badge-light">
-                                        <i className="fa fa-sign-out-alt"/>
+                                        <i className="fa fa-sign-out"/>
                                     </span>&nbsp; Logout
                                 </span>
                             </Link>

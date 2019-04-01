@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route} from "react-router-dom";
 
-let data = localStorage.getItem('user');
+let data = localStorage.getItem('authParams');
 
 const RequireAuth = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) =>(
