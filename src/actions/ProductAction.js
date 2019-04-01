@@ -48,10 +48,10 @@ export const getProductById = (id) =>{
   }
 };
 
-export const addToCart = (product, token) =>{
+export const addToCart = (payload, token) =>{
     return (dispatch) => {
         dispatch(ActionUtils.request(ProductConstants.ADD_TO_CART_RQ, {}));
-        ProductService.addProductToCart(product, token)
+        ProductService.addProductToCart(payload, token)
             .then(
                 success =>{
                     dispatch(ActionUtils.success(ProductConstants.ADD_TO_CART_SUCC, success))

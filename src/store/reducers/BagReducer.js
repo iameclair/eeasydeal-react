@@ -5,18 +5,18 @@ let offlineCart = JSON.parse(localStorage.getItem('aybegdtyruklmop_fgrty'));
 const initState = offlineCart?{
   message:'',
   quantity: cart? cart.quantity: 0,
-  error:'',
+  error:false,
   cart:[],
   offlineCart: offlineCart
 }:{
     message:'',
     quantity: cart? cart.quantity: 0,
-    error:'',
+    error:false,
     cart:[],
     offlineCart: []
 };
 
-const CartReducer = (state = initState, action) =>{
+const BagReducer = (state = initState, action) =>{
     switch (action.type) {
         case ProductConstants.ADD_TO_CART_RQ:
             return  {
@@ -26,12 +26,14 @@ const CartReducer = (state = initState, action) =>{
             return {
                 ...state,
                 quantity: action.payload.quantity,
-                message: action.payload
+                message: action.payload.message,
+                error: false,
             };
         case ProductConstants.ADD_TO_CART_ERR:
             return{
                 ...state,
-                error: action.payload
+                message: action.payload.message,
+                error:true,
             };
         case ProductConstants.VIEW_CART_REQUEST:
             return  {
@@ -75,4 +77,4 @@ const CartReducer = (state = initState, action) =>{
     }
 };
 
-export default CartReducer;
+export default BagReducer;

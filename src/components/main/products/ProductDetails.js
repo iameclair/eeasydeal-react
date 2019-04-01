@@ -28,9 +28,9 @@ class ProductDetails extends Component {
     }
 
     render() {
-        const {basket} = this.props;
         const {product} = this.props;
         const {location} = this.state;
+        const {bag} = this.props;
         const images = product.result.images !== undefined ? product.result.images :
             [{image: "http://lorempixel.com/640/360"},
                 {image: "http://lorempixel.com/640/360"},
@@ -41,6 +41,12 @@ class ProductDetails extends Component {
 
         return (
             <div className="ProductDetails">
+                {bag.error? <div className="alert alert-danger m-2 text-center">
+                    {bag.message}
+                </div>:
+                    <div className="alert alert-success m-2 text-center">
+                        {bag.message}
+                    </div>}
                 <div className="container clearfix">
                     <div className="product-section float-left">
                         <ProductPresentation product={product} location={location} images={images}/>
@@ -94,7 +100,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         product: state.product,
-        basket: state.basket
+        basket: state.basket,
+        bag: state.bag
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

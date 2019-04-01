@@ -21,9 +21,9 @@ class ShoppingBag extends PureComponent {
             const {cart} = this.props;
             this.setState(
                 {
-                    total: this.computeTotal(cart.offlineCart),
-                    basketSize: cart.offlineCart.length,
-                    offlineCart: cart.offlineCart
+                    // total: this.computeTotal(cart.offlineCart),
+                    // basketSize: cart.offlineCart.length,
+                    // offlineCart: cart.offlineCart
                 }
             );
         }
@@ -57,12 +57,12 @@ class ShoppingBag extends PureComponent {
         let total = 0;
         let basketSize = 0;
         let offlineCart = [];
-        if (!this.state.isLoggedIn) {
-            const {cart} = this.props;
-            total = total + this.computeTotal(cart.offlineCart);
-            basketSize = cart.offlineCart.length;
-            offlineCart = cart.offlineCart;
-        }
+        // if (!this.state.isLoggedIn) {
+        //     const {cart} = this.props;
+        //     total = total + this.computeTotal(cart.offlineCart);
+        //     basketSize = cart.offlineCart.length;
+        //     offlineCart = cart.offlineCart;
+        // }
         const {bag} = this.props;
         return (
             <div className="container">

@@ -26,7 +26,7 @@ async function viewCart(token) {
     return await handleResponse(response);
 }
 
-const addProductToCart = (product, token) => {
+const addProductToCart = (payload, token) => {
 
     const requestOptions = {
         method: 'POST',
@@ -34,7 +34,7 @@ const addProductToCart = (product, token) => {
             'Content-Type': 'application/json',
             'Authorization': `JWT ${token}`
         },
-        body: JSON.stringify(product)
+        body: JSON.stringify(payload)
     };
     return fetch(`${baseUrl}/v1/api/cart/create`, requestOptions)
         .then(handleResponse)
@@ -42,10 +42,12 @@ const addProductToCart = (product, token) => {
             localStorage.setItem("cart", JSON.stringify(data));
             return {
                 quantity: data.quantity,
-                message: "Product added successfully"
+                message: "Item added successfully to bag"
             };
         }, error =>{
-            return `There's adding product to cart: ${error}`;
+            return {
+                message: `There's been an error while adding item to cart: ${error}`
+            };
         });
 };
 

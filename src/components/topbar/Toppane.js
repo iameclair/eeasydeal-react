@@ -31,6 +31,8 @@ class Toppane extends PureComponent {
 
     render() {
         const {auth} = this.props;
+        const {bag} = this.props;
+        console.log("Bag:", bag);
         return (
             <div className="Toppane">
                 <MobileNavigation/>
@@ -56,6 +58,7 @@ class Toppane extends PureComponent {
                             </div>
                             <div className="shopping-container">
                                 <i className="fa fa-shopping-bag fa-2x"/>
+                                <span className="badge badge-light">{bag.quantity}</span>
                                 <div className="shopping-snapshot">
                                     <ShoppingBag/>
                                 </div>
@@ -68,8 +71,9 @@ class Toppane extends PureComponent {
                                     auth.loggedIn? <span>
                                         <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Eclair</span>
                                         </span>:
-                                        <span>
-                                            <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Login</span>
+                                        <span className="d-flex justify-content-center align-items-center">
+                                            <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner"
+                                                id="accountLoginIcon">My Account</span>
                                         </span>
                                 }
                                 <div className="account-snapshot">
@@ -89,6 +93,7 @@ class Toppane extends PureComponent {
 const mapStateToProps = (state) => {
     return {
         auth: state.auth,
+        bag: state.bag,
     }
 };
 export default connect(mapStateToProps)(Toppane);

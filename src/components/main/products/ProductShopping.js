@@ -1,4 +1,7 @@
 import React, {PureComponent} from 'react';
+import {ProductAction} from "../../../actions/ProductAction";
+import {BasketActions} from "../../../actions/BasketActions";
+import connect from "react-redux/es/connect/connect";
 
 class ProductShopping extends PureComponent{
     constructor(props) {
@@ -75,9 +78,13 @@ class ProductShopping extends PureComponent{
         const {product} = this.props;
         let quantity = this.state.quantity;
 
-        let token = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).token : null;
+         let token = localStorage.getItem("authParams") ? JSON.parse(localStorage.getItem("user")).token : null;
         if (token !== null) {
-            this.props.addToCart(quantity, token);
+            const payload ={
+                quantity: quantity,
+                product: product.result.id,
+            };
+            this.props.addToCart(payload, token);
         } else {
             let _Cart = this.Cart;
             _Cart.init();
@@ -85,13 +92,14 @@ class ProductShopping extends PureComponent{
             this.props.addToCartOffline(product.result, quantity);
         }
         //update the cart list
-        this.props.updateCart(product.result);
+        //this.props.updateCart(product.result);
     };
     _computerPercentage = (price, discout) => {
         return Math.round(100 - ((discout * 100) / price));
     };
     render(){
         const {product} = this.props;
+        console.log("Product Shopping: ", product);
         return(
             <div className="ProductShopping">
                 <div className="options text-justify">
@@ -131,4 +139,24 @@ class ProductShopping extends PureComponent{
         )
     }
 }
-export default ProductShopping;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (payload, token) => {
+            dispatch(ProductAction.addToCart(payload, token))
+        },
+        addToCartOffline: (product, request) => {
+            dispatch(ProductAction.addToCartOffline(product, request))
+        },
+        updateCart: (product) => {
+            dispatch(BasketActions.updateCart(product));
+        }
+    }
+};
+
+const mapStateToProps = (state) => {
+    return {
+        product: state.product,
+        basket: state.basket
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ProductShopping);
