@@ -1,22 +1,24 @@
 import {ProductConstants} from "../../constants/ProductConstants";
-let cart = JSON.parse(localStorage.getItem('cart'));
+let cart = JSON.parse(localStorage.getItem('shoppingBag'));
 let offlineCart = JSON.parse(localStorage.getItem('aybegdtyruklmop_fgrty'));
 
 const initState = offlineCart?{
   message:'',
   quantity: cart? cart.quantity: 0,
   error:false,
-  cart:[],
+  cart:cart? cart.contents: [],
+  extras: cart? cart.extras: [],
   offlineCart: offlineCart
 }:{
     message:'',
     quantity: cart? cart.quantity: 0,
     error:false,
-    cart:[],
+    cart:cart? cart.contents: [],
+    extras: cart? cart.extras: [],
     offlineCart: []
 };
 
-const BagReducer = (state = initState, action) =>{
+const CartReducer = (state = initState, action) =>{
     switch (action.type) {
         case ProductConstants.ADD_TO_CART_RQ:
             return  {
@@ -42,7 +44,8 @@ const BagReducer = (state = initState, action) =>{
         case ProductConstants.VIEW_CART_SUCCESS:
             return {
                 ...state,
-                cart: action.payload
+                quantity: action.payload.count,
+                cart: action.payload.results,
             };
         case ProductConstants.VIEW_CART_FAILURE:
             return{
@@ -77,4 +80,4 @@ const BagReducer = (state = initState, action) =>{
     }
 };
 
-export default BagReducer;
+export default CartReducer;

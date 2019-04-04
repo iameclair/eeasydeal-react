@@ -27,7 +27,6 @@ async function viewCart(token) {
 }
 
 const addProductToCart = (payload, token) => {
-
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -39,10 +38,9 @@ const addProductToCart = (payload, token) => {
     return fetch(`${baseUrl}/v1/api/cart/create`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            localStorage.setItem("cart", JSON.stringify(data));
             return {
                 quantity: data.quantity,
-                message: "Item added successfully to bag"
+                message: "Item added successfully to cart"
             };
         }, error =>{
             return {

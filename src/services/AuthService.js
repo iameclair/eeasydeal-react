@@ -15,7 +15,6 @@ const login = (user) => {
             }
             return Promise.resolve(authParams);
         }, error =>{
-            console.log("There's been an error: ",error);
             return Promise.reject(new Error(error));
         });
 };

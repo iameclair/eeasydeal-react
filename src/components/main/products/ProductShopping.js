@@ -78,13 +78,19 @@ class ProductShopping extends PureComponent{
         const {product} = this.props;
         let quantity = this.state.quantity;
 
-         let token = localStorage.getItem("authParams") ? JSON.parse(localStorage.getItem("user")).token : null;
+         let token = localStorage.getItem("authParams") ? JSON.parse(localStorage.getItem("authParams")).token : null;
         if (token !== null) {
             const payload ={
                 quantity: quantity,
                 product: product.result.id,
             };
-            this.props.addToCart(payload, token);
+            const extras ={
+                product: product.result.id,
+                icon: product.result.images[0].image,
+                name:product.result.name,
+                price:product.result.discounted_price,
+            };
+            this.props.addToCart(payload, token, extras);
         } else {
             let _Cart = this.Cart;
             _Cart.init();
@@ -99,7 +105,6 @@ class ProductShopping extends PureComponent{
     };
     render(){
         const {product} = this.props;
-        console.log("Product Shopping: ", product);
         return(
             <div className="ProductShopping">
                 <div className="options text-justify">
@@ -131,8 +136,8 @@ class ProductShopping extends PureComponent{
                     </div>
                     <button type="submit"
                             className="btn btn-color btn-lg btn-block">
-                        <i className="fa fa-shopping-bag"/>&nbsp;
-                        Add to bag
+                        <i className="fa fa-shopping-cart"/>&nbsp;
+                        Add to cart
                     </button>
                 </form>
             </div>
@@ -141,8 +146,8 @@ class ProductShopping extends PureComponent{
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (payload, token) => {
-            dispatch(ProductAction.addToCart(payload, token))
+        addToCart: (payload, token, extras) => {
+            dispatch(ProductAction.addToCart(payload, token, extras))
         },
         addToCartOffline: (product, request) => {
             dispatch(ProductAction.addToCartOffline(product, request))

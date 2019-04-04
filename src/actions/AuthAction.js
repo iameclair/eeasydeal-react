@@ -8,7 +8,6 @@ const login = (user, ownProps) =>{
         AuthService.login(user)
             .then(
               user => {
-                  console.log("Login: ", user);
                   const data ={
                       user: user,
                       message: "Login successfully"
@@ -25,7 +24,6 @@ const login = (user, ownProps) =>{
                   AuthService.fetchProfile(userId)
                       .then(
                           profile =>{
-                              console.log("Fetching profile: ", profile);
                               const payload ={
                                   profile: profile,
                                   message: "fetch profile successfully",

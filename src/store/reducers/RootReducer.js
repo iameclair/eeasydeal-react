@@ -5,7 +5,7 @@ import productReducer from './ProductReducer'
 import {combineReducers} from 'redux'
 import productByIdReducer from "./ProductByIdReducer";
 import passwordManagementReducer from "./PasswordManagmentReducer";
-import BagReducer from "./BagReducer";
+import CartReducer from "./CartReducer";
 import BasketReducer from "./BasketReducer";
 
 const rootReducer = combineReducers({
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
    registration: registerReducer,
    products: productReducer,
    product: productByIdReducer,
-   bag: BagReducer,
+   cart: CartReducer,
    basket: BasketReducer,
    passwordManagment: passwordManagementReducer,
 });

@@ -107,3 +107,14 @@
     }
   }
 }
+.account-owner:after{
+  content: "   ";
+  margin: 0 0 4px 10px;
+  font-size: 26px;
+  border: solid $secondary;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}

@@ -1,5 +1,6 @@
 @import "init";
 .Landing{
+  color: $primary;
   @include sm{
   }
   .landing-container{
@@ -34,9 +35,6 @@
           }
         }
       }
-      .advert-deals-section{
-        margin: 0 0 2% 0;
-      }
       @include sm{
         .section-title{
           margin: 1% 0 1% 0;
@@ -46,6 +44,19 @@
         .trending-product-item{
           .product-item-container{
             background-color: $light;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .advert-deals-section{
+      margin: 1% 0 2% 0;
+      color: $primary;
+      .row{
+        .advert{
+          height: 400px;
+          img{
             width: 100%;
             height: 100%;
           }

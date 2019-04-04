@@ -63,8 +63,13 @@ class Landing extends Component {
                     </div>
                     <div className="advert-deals-section">
                         <h3 className="section-title">Checkout the hottest deals</h3>
-                        <div>
-                            <img src="../../assets/images/banner9.png" alt="advert"/>
+                        <div className="row">
+                            <div className="col advert">
+                                <img src={require("../../assets/images/banner1.jpeg")} className="rounded" alt="advert"/>
+                            </div>
+                            <div className="col advert">
+                                <img src={require("../../assets/images/cofee.jpeg")} className="rounded" alt="advert"/>
+                            </div>
                         </div>
                     </div>
                     <div className="promotion-deals-section">

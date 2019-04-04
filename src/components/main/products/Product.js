@@ -22,7 +22,7 @@ class Product extends Component {
                                      <div className="d-inline-block text-muted">
                                          <i className="fa fa-clock-o"/>&nbsp;
                                          <span className="d-inline-block"><CountdownTimer count={this.props.expiryDate} size={10}
-                                                         color={"#6c757d"}/></span>
+                                         color={"#6c757d"}/></span>
                                      </div>
                                 </span>
                         </div>
