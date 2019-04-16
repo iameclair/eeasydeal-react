@@ -10,9 +10,9 @@ class Account extends PureComponent {
                 {
                     !auth.loggedIn ?
                         <div className="account-login-register">
-                            <span className="clickable-link"><Link to="/login">Log In</Link></span>
+                            <span className="clickable-link" id="loginLink"><Link to="/login">Log In</Link></span>
                             <span className="vertical-separator">|</span>
-                            <span className="clickable-link"><Link to="/register">Register</Link></span>
+                            <span className="clickable-link" id="registerLink"><Link to="/register">Register</Link></span>
                         </div> :
                         <div className="account-menu-container">
                             <Link to={`/account/${"myaccount"}`}>

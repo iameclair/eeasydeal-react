@@ -35,11 +35,11 @@ class ProductPresentation extends PureComponent {
                         <div className="carousel-inner">
                             {this.renderImages(images)}
                         </div>
-                        <button className="carousel-control-prev" href="#productCarousel" role="button"
+                        <a className="carousel-control-prev" href="#productCarousel" role="button"
                                 data-slide="prev">
                          <span className="carousel-control-prev-icon carousel-handler" aria-hidden="true"/>
                             <span className="sr-only">Previous</span>
-                        </button>
+                        </a>
                         <a className="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
                              <span className="carousel-control-next-icon carousel-handler" aria-hidden="true"/>
                              <span className="sr-only">Next</span>

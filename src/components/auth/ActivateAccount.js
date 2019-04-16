@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {AuthActions} from "../../actions/AuthAction";
-import {Redirect} from "react-router-dom";
-
 
 class ActivateAccount extends Component{
     componentDidMount() {

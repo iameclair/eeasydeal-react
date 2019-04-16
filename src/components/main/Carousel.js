@@ -11,13 +11,13 @@ export default class Carousel extends Component {
             <div className="Carousel">
                 <Slider {...settings}>
                     <div className="carousel-item d-flex">
-                        <img src={require("../../assets/images/banner1.jpg")} alt="banner1"/>
+                        <img src={require("../../assets/images/eeasydealbanner.png")} alt="banner1"/>
+                    </div>
+                    <div className="carousel-item d-flex">
+                        <img src={require("../../assets/images/banner2.jpg")} alt="banner2"/>
                     </div>
                     <div className="carousel-item d-flex">
                         <img src={require("../../assets/images/banner2.png")} alt="banner2"/>
-                    </div>
-                    <div className="carousel-item d-flex">
-                        <img src={require("../../assets/images/banner3.jpg")} alt="banner2"/>
                     </div>
                 </Slider>
             </div>

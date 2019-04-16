@@ -15,7 +15,7 @@ import ResetPassword from "./auth/ResetPassword";
 import ProductDetails from "./main/products/ProductDetails";
 import ActivateAccount from "./auth/ActivateAccount";
 import MyAccount from "./topbar/Account/MyAccount";
-import Bag from "./topbar/Shopping/Bag";
+import Cart from "./topbar/Shopping/Cart";
 
 class App extends Component {
   render() {
@@ -33,7 +33,7 @@ class App extends Component {
                           <RouteGuards.OnlyNonAuth path="/register" component={Register}/>
                           <RouteGuards.OnlyNonAuth path="/forget-password" component={ForgetPassword}/>
                           <RouteGuards.OnlyNonAuth path="/password-reset" component={ResetPassword}/>
-                          <Route path="/shopping-bag" component={Bag}/>
+                          <Route path="/shopping-cart" component={Cart}/>
                           <Route path="/v1/api/auth/users/activate/:uid/:token" component={ActivateAccount}/>
                           <RouteGuards.RequireAuth path="/account/:page" component={MyAccount}/>
                           <Route component={Landing} />

@@ -26,26 +26,26 @@ async function viewCart(token) {
     return await handleResponse(response);
 }
 
-const addProductToCart = (product, token) => {
-
+const addProductToCart = (payload, token) => {
     const requestOptions = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `JWT ${token}`
         },
-        body: JSON.stringify(product)
+        body: JSON.stringify(payload)
     };
     return fetch(`${baseUrl}/v1/api/cart/create`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            localStorage.setItem("cart", JSON.stringify(data));
             return {
                 quantity: data.quantity,
-                message: "Product added successfully"
+                message: "Item added successfully to cart"
             };
         }, error =>{
-            return `There's adding product to cart: ${error}`;
+            return {
+                message: `There's been an error while adding item to cart: ${error}`
+            };
         });
 };
 

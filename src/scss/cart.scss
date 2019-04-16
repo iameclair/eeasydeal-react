@@ -1,18 +1,18 @@
 /*@import url('https://fonts.googleapis.com/css?family=Righteous|lucida grande');*/
 @import "init";
-.Bag{
+.Cart{
   font-family: 'lucida grande', sans-serif;
   width: 50%;
-  .bag-title{
+  .cart-title{
     font-family: 'lucida grande', sans-serif;
     font-size: 18px;
     color: $primary;
   }
-  .bag-content{
-    .bag-item{
-      .bag-item-content{
+  .cart-content{
+    .cart-item{
+      .cart-item-content{
         width: 100%;
-        .bag-item-content-price{
+        .cart-item-content-price{
           color: #13215b;
           width: 100%;
         }
@@ -21,17 +21,17 @@
   }
 }
 
-.delete-bag-item{
+.delete-cart-item{
   font-size: 16px;
   font-weight: bolder;
 }
-.form-control-bag{
+.form-control-cart{
   border: 0;
 }
-.bag-content-subtotal{
+.cart-content-subtotal{
   color: #13215b;
 }
-.bag-summary{
+.cart-summary{
   width: 30%;
   border-radius: 0;
 }
@@ -42,10 +42,10 @@
 }
 
 @media only screen and (max-width: 900px){
-  .Bag{
+  .Cart{
     width: 80%;
   }
-  .bag-summary{
+  .cart-summary{
     width: 80%;
     border-radius: 0;
   }

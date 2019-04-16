@@ -3,6 +3,11 @@
   display: flex;
   text-align: center;
   position: relative;
+  .badge{
+    background-color: $primary;
+    color: $secondary;
+    font-size: 18px;
+  }
   .shopping-snapshot{
     position: absolute;
     background-color: $light;
@@ -34,7 +39,7 @@
   display: block;
   cursor: pointer;
 }
-.shopping-bag{
+.shopping-cart{
   color:$primary;
   ul{
     li{

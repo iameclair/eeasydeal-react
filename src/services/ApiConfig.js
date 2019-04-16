@@ -1,10 +1,10 @@
-export let baseUrl = "http://localhost:8000";
+export let baseUrl = "http://localhost:4000";
 
 export const handleResponse = (response) =>{
+    console.log("Handle Response: ", response);
     return response.text().then(text => {
-        console.log("Processing response: ", response);
         const data = text && JSON.parse(text);
-        console.log("Processed response: ", data);
+        console.log("Handle Response: ", data);
         if (!response.ok) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(new Error(error));

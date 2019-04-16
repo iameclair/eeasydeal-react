@@ -48,13 +48,29 @@ export const getProductById = (id) =>{
   }
 };
 
-export const addToCart = (product, token) =>{
+export const addToCart = (payload, token, extras) =>{
     return (dispatch) => {
         dispatch(ActionUtils.request(ProductConstants.ADD_TO_CART_RQ, {}));
-        ProductService.addProductToCart(product, token)
+        ProductService.addProductToCart(payload, token)
             .then(
                 success =>{
-                    dispatch(ActionUtils.success(ProductConstants.ADD_TO_CART_SUCC, success))
+                    dispatch(ActionUtils.success(ProductConstants.ADD_TO_CART_SUCC, success));
+                    let storedExtras = JSON.parse(localStorage.getItem("shoppingBag"));
+                    const varExtras = storedExtras? storedExtras.extras: [];
+                    ProductService.viewCart(token)
+                        .then(resolved=>{
+                            dispatch(ActionUtils.success(ProductConstants.VIEW_CART_SUCCESS, resolved));
+
+                            const cartList = {
+                                quantity: resolved.count,
+                                contents: resolved.results,
+                                extras: varExtras.concat(extras),
+                            };
+
+                            localStorage.setItem("shoppingBag", JSON.stringify(cartList));
+                        },rejected=>{
+                            dispatch(ActionUtils.failure(ProductConstants.VIEW_CART_FAILURE, rejected));
+                        });
                 },
                 error =>{
                     dispatch(ActionUtils.failure(ProductConstants.ADD_TO_CART_ERR, error))

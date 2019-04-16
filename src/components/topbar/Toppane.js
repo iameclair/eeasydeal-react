@@ -1,10 +1,9 @@
 import React, {PureComponent} from 'react';
 import SearchBar from "./Search";
 import Account from "./Account/Account";
-import ShoppingBag from "./Shopping/ShoppingBag";
+import ShoppingBag from "./Shopping/ShoppingCart";
 import MobileNavigation from "./Navigation/MobileNavigation";
 import AccountMobile from "./Account/AccountMobile";
-import {AuthActions} from "../../actions/AuthAction";
 import connect from "react-redux/es/connect/connect";
 
 class Toppane extends PureComponent {
@@ -31,6 +30,7 @@ class Toppane extends PureComponent {
 
     render() {
         const {auth} = this.props;
+        const {cart} = this.props;
         return (
             <div className="Toppane">
                 <MobileNavigation/>
@@ -55,21 +55,24 @@ class Toppane extends PureComponent {
                                 <SearchBar/>
                             </div>
                             <div className="shopping-container">
-                                <i className="fa fa-shopping-bag fa-2x"/>
+                                <i className="fa fa-shopping-cart fa-2x"/>
+                                <span className="badge badge-light">{cart.quantity}</span>
                                 <div className="shopping-snapshot">
                                     <ShoppingBag/>
                                 </div>
                             </div>
                             <div className="shopping-container-mobile">
-                                <i className="fa fa-shopping-bag fa-2x"/>
+                                <i className="fa fa-shopping-cart fa-2x"/>
+                                <span className="badge badge-light">{cart.quantity}</span>
                             </div>
                             <div className="account-container">
                                 {
-                                    auth.loggedIn? <span>
+                                    auth.loggedIn? <span className="d-flex justify-content-center align-items-center">
                                         <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Eclair</span>
                                         </span>:
-                                        <span>
-                                            <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Login</span>
+                                        <span className="d-flex justify-content-center align-items-center">
+                                            <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner"
+                                                id="accountLoginIcon">My Account</span>
                                         </span>
                                 }
                                 <div className="account-snapshot">
@@ -89,6 +92,7 @@ class Toppane extends PureComponent {
 const mapStateToProps = (state) => {
     return {
         auth: state.auth,
+        cart: state.cart,
     }
 };
 export default connect(mapStateToProps)(Toppane);

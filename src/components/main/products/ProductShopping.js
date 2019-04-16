@@ -1,4 +1,7 @@
 import React, {PureComponent} from 'react';
+import {ProductAction} from "../../../actions/ProductAction";
+import {BasketActions} from "../../../actions/BasketActions";
+import connect from "react-redux/es/connect/connect";
 
 class ProductShopping extends PureComponent{
     constructor(props) {
@@ -75,9 +78,19 @@ class ProductShopping extends PureComponent{
         const {product} = this.props;
         let quantity = this.state.quantity;
 
-        let token = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).token : null;
+         let token = localStorage.getItem("authParams") ? JSON.parse(localStorage.getItem("authParams")).token : null;
         if (token !== null) {
-            this.props.addToCart(quantity, token);
+            const payload ={
+                quantity: quantity,
+                product: product.result.id,
+            };
+            const extras ={
+                product: product.result.id,
+                icon: product.result.images[0].image,
+                name:product.result.name,
+                price:product.result.discounted_price,
+            };
+            this.props.addToCart(payload, token, extras);
         } else {
             let _Cart = this.Cart;
             _Cart.init();
@@ -85,7 +98,7 @@ class ProductShopping extends PureComponent{
             this.props.addToCartOffline(product.result, quantity);
         }
         //update the cart list
-        this.props.updateCart(product.result);
+        //this.props.updateCart(product.result);
     };
     _computerPercentage = (price, discout) => {
         return Math.round(100 - ((discout * 100) / price));
@@ -123,12 +136,32 @@ class ProductShopping extends PureComponent{
                     </div>
                     <button type="submit"
                             className="btn btn-color btn-lg btn-block">
-                        <i className="fa fa-shopping-bag"/>&nbsp;
-                        Add to bag
+                        <i className="fa fa-shopping-cart"/>&nbsp;
+                        Add to cart
                     </button>
                 </form>
             </div>
         )
     }
 }
-export default ProductShopping;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (payload, token, extras) => {
+            dispatch(ProductAction.addToCart(payload, token, extras))
+        },
+        addToCartOffline: (product, request) => {
+            dispatch(ProductAction.addToCartOffline(product, request))
+        },
+        updateCart: (product) => {
+            dispatch(BasketActions.updateCart(product));
+        }
+    }
+};
+
+const mapStateToProps = (state) => {
+    return {
+        product: state.product,
+        basket: state.basket
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ProductShopping);

@@ -9,17 +9,13 @@ class Register extends Component {
     _handleSubmit = (values,
                      {props = this.props, setSubmitting}) => {
         const user = {
-            "username": values.email,
-            "first_name": values.first_name,
-            "last_name": values.last_name,
+            "firstName": values.first_name,
+            "lastName": values.last_name,
             "email": values.email,
-            "seller": {
-                "designation": "Mr",
-                "cellphone": "0780531190"
-            },
             "password": values.password,
             "password2": values.confirmPassword
         };
+        console.log(user);
         props.createAccount(user);
         setSubmitting(false);
     };
