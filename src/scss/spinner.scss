@@ -1,5 +1,4 @@
 @import "init";
-
 .loader {
   border: 16px solid $secondary;
   border-radius: 50%;
@@ -9,9 +8,11 @@
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
   position: absolute;
+  z-index: 1;
+  left: 50%;
   top: 45%;
-  left:50%;
 }
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

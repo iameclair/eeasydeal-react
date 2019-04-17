@@ -1,10 +1,13 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 
 class Spinner extends PureComponent{
-    render(){
+    render() {
         return(
-            <div className="loader"/>
+            <Fragment>
+                <div className="loader"/>
+            </Fragment>
         )
     }
 }
+
 export default Spinner;
