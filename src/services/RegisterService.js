@@ -7,7 +7,7 @@ const register = (user) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
     };
-    return fetch(baseUrl+'/api/auth/signup', requestOptions)
+    return fetch(baseUrl+'/api/account/signup', requestOptions)
         .then(handleResponse);
 };
 

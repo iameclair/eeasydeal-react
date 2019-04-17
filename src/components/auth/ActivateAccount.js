@@ -1,33 +1,33 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {AuthActions} from "../../actions/AuthAction";
+import Spinner from "../main/Spinner";
 
 class ActivateAccount extends Component{
     componentDidMount() {
         const {match:{params}}= this.props;
-        const activate = {
-            uid: params.uid,
-            token: params.token
-        };
-        this.props.accountActivation(activate);
+        const {token} = params;
+        this.props.accountActivation(token);
     }
-
+    renderSpinner =(attempt, loading)=>{
+        if(attempt && loading) return <Spinner/>;
+    };
+    accountActivated=(attempt, active, message)=>{
+        console.log("Activate account attempt: ", attempt, " Active: ", active, "Message: ", message);
+        if(attempt && active){
+            return <div className="alert alert-success m-2 text-center">{message}</div>
+        }else{
+            return <div className="alert alert-danger m-2 text-center">{message}</div>
+        }
+    };
     render() {
-        const {auth} = this.props;
+        const {activateAccount} = this.props;
+        const {attempt, loading, active, message} = activateAccount;
         return(
             <div className="container">
-                {auth.active?<div>
-                    <div className="alert alert-success m-2 text-center">
-                        Account activated successfully, redirecting to login
-                    </div>:<div className="d-none"/>
-                    <div className="d-flex justify-content-center">
-                        <div className="spinner-border"  style={{width: "5rem", height: "5rem"}} role="status">
-                            <span className="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                </div>:<div className="d-none"/>}
+                {this.renderSpinner(attempt, loading)}
+                {this.accountActivated(attempt,active,message)}
             </div>
-
         )
     }
 }
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 };
 const mapStateToProps=(state)=>{
     return{
-        auth: state.auth
+        activateAccount: state.activateAccount
     }
 };
 

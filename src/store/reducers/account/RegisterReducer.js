@@ -1,4 +1,4 @@
-import {UserConstants} from "../../constants/UserConstants";
+import {UserConstants} from "../../../constants/UserConstants";
 
 const initialState ={
     attempt: false,

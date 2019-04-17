@@ -7,15 +7,17 @@ const login = (user) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    return fetch(baseUrl+'/v1/api/auth/token-auth', requestOptions)
+    return fetch(baseUrl+'/api/account/signin', requestOptions)
         .then(handleResponse)
         .then(authParams => {
-            if (authParams.token) {
-              localStorage.setItem('authParams', JSON.stringify(authParams));
-            }
+            console.log("Login success: ", authParams);
+            // if (authParams.token) {
+            //   localStorage.setItem('authParams', JSON.stringify(authParams));
+            // }
             return Promise.resolve(authParams);
         }, error =>{
-            return Promise.reject(new Error(error));
+            console.log("Login failure: ", error);
+            return Promise.reject(error);
         });
 };
 async function fetchProfile(userId){
@@ -43,7 +45,7 @@ const resetPassword = (email) =>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(email)
     };
-    return fetch(baseUrl+'/v1/api/auth/password/reset', requestOptions)
+    return fetch(baseUrl+'/v1/api/account/password/reset', requestOptions)
         .then(handleResponse)
         .then(success => {
             if (success.message) {
@@ -61,7 +63,7 @@ const passwordResetConfirmation = (passwordReset) =>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(passwordReset)
     };
-    return fetch(baseUrl+'/v1/api/auth/password/reset/confirm', requestOptions)
+    return fetch(baseUrl+'/v1/api/account/password/reset/confirm', requestOptions)
         .then(handleResponse)
         .then(success => {
             return "Password changed successfully"
@@ -70,18 +72,19 @@ const passwordResetConfirmation = (passwordReset) =>{
         });
 };
 
-const activateAccount = (activate) => {
+const activateAccount = (token) => {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(activate)
+        headers: { 'Content-Type': 'application/json' }
     };
-    return fetch(baseUrl+'/v1/api/auth/users/activate', requestOptions)
+    return fetch(baseUrl+`/api/auth/activate/${token}`, requestOptions)
         .then(handleResponse)
         .then(success => {
-            return "Account activated successfully"
+            console.log("Auth Service Activate Account Success: ", success);
+            return Promise.resolve(success);
         }, error =>{
-            return "There's been a problem activating account";
+            console.log("Auth Service Activate Account Failure: ", error);
+            return Promise.reject(error);
         });
 };
 

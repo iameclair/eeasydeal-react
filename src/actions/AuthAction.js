@@ -2,17 +2,21 @@ import {UserConstants} from "../constants/UserConstants";
 import {AuthService} from "../services/AuthService";
 import {ActionUtils} from "./ActionUtils";
 
-const login = (user, ownProps) =>{
+const login = (data, ownProps) =>{
     return dispatch => {
-        dispatch(ActionUtils.request(UserConstants.LOGIN_REQUEST, user));
-        AuthService.login(user)
+        dispatch(ActionUtils.request(UserConstants.LOGIN_REQUEST, data));
+        AuthService.login(data)
             .then(
-              user => {
+              res => {
+                  console.log("Auth Action success: ", res);
                   const data ={
-                      user: user,
-                      message: "Login successfully"
+                      user: res,
+                      message: res.message
                   };
                  dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, data));
+                 //set cookies
+                  const {cookies} = ownProps;
+                  cookies.set('token', res.token, {path:'/'}, {expires:''});
                   setTimeout(()=>{
                       ownProps.history.push(`/`);
                   }, 5000);
@@ -37,9 +41,10 @@ const login = (user, ownProps) =>{
                       )
               },
               error => {
+                  console.log("Auth Action failure: ", error);
                   const data ={
                       error:error,
-                      message: "Email or Password incorrect try again"
+                      message: error.message
                   };
                   dispatch(ActionUtils.failure(UserConstants.LOGIN_FAILURE, data));
               }
@@ -67,13 +72,15 @@ const activateAccount = (activate, ownProps) =>{
         AuthService.activateAccount(activate)
             .then(
                 success => {
+                    console.log("Auth Action Activate Account Success: ", success);
                     dispatch(ActionUtils.success(UserConstants.ACTIVATE_SUCCESS, success));
                     setTimeout (()=>{
                         ownProps.history.push("/login");
                     }, 4000)
                 },
                 error => {
-                    dispatch(ActionUtils.failure(UserConstants.ACTIVATE_FAILURE, error.toString()));
+                    console.log("Auth Action Activate Account Failure: ", error);
+                    dispatch(ActionUtils.failure(UserConstants.ACTIVATE_FAILURE,error));
                 }
             )
     }

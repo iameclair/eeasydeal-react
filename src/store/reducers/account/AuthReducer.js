@@ -1,4 +1,4 @@
-import {UserConstants} from "../../constants/UserConstants";
+import {UserConstants} from "../../../constants/UserConstants";
 
 let authParams = JSON.parse(localStorage.getItem('authParams'));
 let profile = JSON.parse(localStorage.getItem('profile'));
@@ -76,21 +76,6 @@ const authReducer = (state = initState, action) =>{
             return{
                 ...state,
                error: true,
-            };
-        case UserConstants.ACTIVATE_REQUEST:
-            return{
-                ...state,
-                active:false,
-            };
-        case UserConstants.ACTIVATE_SUCCESS:
-            return{
-                ...state,
-                active: true
-            };
-        case UserConstants.ACTIVATE_FAILURE:
-            return{
-                ...state,
-                active: false
             };
         default:
             return state

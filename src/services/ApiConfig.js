@@ -5,7 +5,7 @@ export const handleResponse = (response) =>{
         const data = text && JSON.parse(text);
         const {status} = data;
         console.log("status: ", status);
-        if(status === 2000 || status === 201){
+        if(status === 200 || status === 201){
             return Promise.resolve(data);
         }else{
             return Promise.reject(data);

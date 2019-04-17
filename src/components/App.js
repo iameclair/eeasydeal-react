@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import { withCookies } from 'react-cookie';
 import '../scss/index.scss';
 
 //component import
@@ -29,12 +30,16 @@ class App extends Component {
                       <Switch>
                           <Route path="/" exact component={Landing}/>
                           <Route path="/product/:id" component={ProductDetails}/>
-                          <RouteGuards.OnlyNonAuth path="/login" component={Login}/>
+                          {/*<RouteGuards.OnlyNonAuth path="/login" component={Login}/>*/}
+                          {/*/!*<RouteGuards.OnlyNonAuth path="/login" render={()=>(<Login/>)}/>*!/*/}
+                          <Route path='/login' render={() => (
+                              <Login cookies={this.props.cookies}/>
+                          )}/>
                           <RouteGuards.OnlyNonAuth path="/register" component={Register}/>
                           <RouteGuards.OnlyNonAuth path="/forget-password" component={ForgetPassword}/>
                           <RouteGuards.OnlyNonAuth path="/password-reset" component={ResetPassword}/>
                           <Route path="/shopping-cart" component={Cart}/>
-                          <Route path="/v1/api/auth/users/activate/:uid/:token" component={ActivateAccount}/>
+                          <Route path="/api/auth/activate/:token" component={ActivateAccount}/>
                           <RouteGuards.RequireAuth path="/account/:page" component={MyAccount}/>
                           <Route component={Landing} />
                       </Switch>
@@ -49,4 +54,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);

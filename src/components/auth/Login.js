@@ -9,7 +9,7 @@ class Login extends Component {
 
     _handleSubmit = (values, {setSubmitting}) => {
         const user = {
-            "username": values.username,
+            "email": values.username,
             "password": values.password
         };
         this.props.login(user);
@@ -19,6 +19,8 @@ class Login extends Component {
     componentDidMount() {}
 
     render() {
+        const {cookies} = this.props;
+        console.log("Login cookies: ", cookies);
         const {auth} = this.props;
         const validationSchema = Yup.object().shape({
             username: Yup.string()
@@ -102,9 +104,10 @@ class Login extends Component {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         auth: state.auth,
+        cookies: ownProps.cookies
     }
 };
 
