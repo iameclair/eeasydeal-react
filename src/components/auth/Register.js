@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
 import {RegisterAction} from "../../actions/RegisterAction";
 import {connect} from "react-redux"
 import * as Yup from "yup";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import Spinner from '../main/Spinner'
 
 class Register extends Component {
     _handleSubmit = (values,
@@ -41,88 +42,93 @@ class Register extends Component {
         });
 
         return (
-            <Formik
-                initialValues={{
-                    first_name: '',
-                    last_name: '',
-                    email: '',
-                    password: '',
-                    confirmPassword: ''
-                }}
-                validationSchema={validationSchema}
-                onSubmit={this._handleSubmit}
-                render={props => {
-                    return (
-                        <div className="container" id="register">
-                            {registration.attempt && !registration.success ? <div className="alert alert-danger m-2 text-center">
-                                {registration.message}
-                            </div> : <div className="d-none"/>}
-                            {registration.attempt && registration.success ? <div className="alert alert-success m-2 text-center">
-                                {registration.message}
-                            </div> : <div className="d-none"/>}
-                            <div className="Auth">
-                                <div className="auth-form-title"><h2>Register</h2></div>
-                                <div className="auth-form-content">
-                                    <Form>
-                                        <div className="Input">
-                                            <Field
-                                                type="text"
-                                                name="first_name"
-                                                placeholder="First Name"
-                                                className="form-control"
-                                            />
-                                            <span className="errorMessage"><ErrorMessage name="first_name"/></span>
-                                        </div>
-                                        <div className="Input">
-                                            <Field
-                                                type="text"
-                                                name="last_name"
-                                                placeholder="Last Name"
-                                                className="form-control"
-                                            />
-                                            <span className="errorMessage"><ErrorMessage name="last_name"/></span>
-                                        </div>
-                                        <div className="Input">
-                                            <Field type="email"
-                                                   name="email"
-                                                   placeholder="Email"
-                                                   className="form-control"
-                                            />
-                                            <span className="errorMessage"><ErrorMessage name="email"/></span>
-                                        </div>
-                                        <div className="Input">
-                                            <Field
-                                                type="password"
-                                                name="password"
-                                                placeholder="password"
-                                                className="form-control"
-                                            />
-                                            <span className="errorMessage"><ErrorMessage name="password"/></span>
-                                        </div>
-                                        <div className="Input">
-                                            <Field
-                                                type="password"
-                                                name="confirmPassword"
-                                                placeholder="confirm Password"
-                                                className="form-control"
-                                            />
-                                            <span className="errorMessage"><ErrorMessage name="confirmPassword"/></span>
-                                        </div>
-                                        <div className="Input">
-                                            <button type="submit"
-                                                    disabled={props.isSubmitting || !props.isValid}
-                                                    className="btn-primary btn-lg btn-block">
-                                                Register
-                                            </button>
-                                        </div>
-                                    </Form>
+            <Fragment>
+                {registration.attempt && registration.loading ? <div><Spinner/></div> : <div className="d-none"/>}
+                <Formik
+                    initialValues={{
+                        first_name: '',
+                        last_name: '',
+                        email: '',
+                        password: '',
+                        confirmPassword: ''
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={this._handleSubmit}
+                    render={props => {
+                        return (
+                            <div className="container" id="register">
+                                {registration.attempt && !registration.success ?
+                                    <div className="alert alert-danger m-2 text-center">
+                                        {registration.message}
+                                    </div> : <div className="d-none"/>}
+                                {registration.attempt && registration.success ?
+                                    <div className="alert alert-success m-2 text-center">
+                                        {registration.message}
+                                    </div> : <div className="d-none"/>}
+                                <div className="Auth">
+                                    <div className="auth-form-title"><h2>Register</h2></div>
+                                    <div className="auth-form-content">
+                                        <Form>
+                                            <div className="Input">
+                                                <Field
+                                                    type="text"
+                                                    name="first_name"
+                                                    placeholder="First Name"
+                                                    className="form-control"
+                                                />
+                                                <span className="errorMessage"><ErrorMessage name="first_name"/></span>
+                                            </div>
+                                            <div className="Input">
+                                                <Field
+                                                    type="text"
+                                                    name="last_name"
+                                                    placeholder="Last Name"
+                                                    className="form-control"
+                                                />
+                                                <span className="errorMessage"><ErrorMessage name="last_name"/></span>
+                                            </div>
+                                            <div className="Input">
+                                                <Field type="email"
+                                                       name="email"
+                                                       placeholder="Email"
+                                                       className="form-control"
+                                                />
+                                                <span className="errorMessage"><ErrorMessage name="email"/></span>
+                                            </div>
+                                            <div className="Input">
+                                                <Field
+                                                    type="password"
+                                                    name="password"
+                                                    placeholder="password"
+                                                    className="form-control"
+                                                />
+                                                <span className="errorMessage"><ErrorMessage name="password"/></span>
+                                            </div>
+                                            <div className="Input">
+                                                <Field
+                                                    type="password"
+                                                    name="confirmPassword"
+                                                    placeholder="confirm Password"
+                                                    className="form-control"
+                                                />
+                                                <span className="errorMessage"><ErrorMessage
+                                                    name="confirmPassword"/></span>
+                                            </div>
+                                            <div className="Input">
+                                                <button type="submit"
+                                                        disabled={props.isSubmitting || !props.isValid}
+                                                        className="btn-primary btn-lg btn-block">
+                                                    Register
+                                                </button>
+                                            </div>
+                                        </Form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                }}
-            />
-
+                        );
+                    }}
+                />
+            </Fragment>
         );
     }
 }

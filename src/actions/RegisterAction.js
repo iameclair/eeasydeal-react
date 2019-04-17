@@ -18,7 +18,7 @@ const register = (user, ownProps) =>{
               },
               error =>{
                   const payload ={
-                      message:`${user.email}, already exist use another email address`,
+                      message:`${error.message}`,
                   };
                   dispatch(ActionUtils.failure(UserConstants.REGISTER_FAILURE,payload));
               }
