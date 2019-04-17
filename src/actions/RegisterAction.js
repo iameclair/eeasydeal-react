@@ -8,6 +8,7 @@ const register = (user, ownProps) =>{
       RegisterService.register(user)
           .then(
               response =>{
+                  console.log("registration success", response);
                   const payload ={
                       message:`Account created successfully, we have sent an email to ${user.email}, please activate your account before login`,
                   };
@@ -17,8 +18,9 @@ const register = (user, ownProps) =>{
                   }, 4000);
               },
               error =>{
+                  console.log(error);
                   const payload ={
-                      message:`${user.email}, already exist use another email address`,
+                      message:`${error.message}`,
                   };
                   dispatch(ActionUtils.failure(UserConstants.REGISTER_FAILURE,payload));
               }
