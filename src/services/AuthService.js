@@ -1,19 +1,19 @@
 import {baseUrl} from "./ApiConfig";
 import {handleResponse} from "./ApiConfig";
-
 const login = (user) => {
     const requestOptions ={
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    return fetch(baseUrl+'/api/account/signin', requestOptions)
+    console.log("Request Options: ", requestOptions);
+    return fetch(baseUrl+'/api/auth/signin', requestOptions)
         .then(handleResponse)
         .then(authParams => {
             console.log("Login success: ", authParams);
-            // if (authParams.token) {
-            //   localStorage.setItem('authParams', JSON.stringify(authParams));
-            // }
+            if (authParams.token) {
+              localStorage.setItem('authParams', JSON.stringify(authParams));
+            }
             return Promise.resolve(authParams);
         }, error =>{
             console.log("Login failure: ", error);
@@ -45,7 +45,7 @@ const resetPassword = (email) =>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(email)
     };
-    return fetch(baseUrl+'/v1/api/account/password/reset', requestOptions)
+    return fetch(baseUrl+'/v1/api/auth/password/reset', requestOptions)
         .then(handleResponse)
         .then(success => {
             if (success.message) {
@@ -63,7 +63,7 @@ const passwordResetConfirmation = (passwordReset) =>{
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(passwordReset)
     };
-    return fetch(baseUrl+'/v1/api/account/password/reset/confirm', requestOptions)
+    return fetch(baseUrl+'/v1/api/auth/password/reset/confirm', requestOptions)
         .then(handleResponse)
         .then(success => {
             return "Password changed successfully"
