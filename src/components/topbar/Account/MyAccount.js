@@ -1,50 +1,36 @@
 import React, {Component} from 'react';
-import Profile from "./Profile";
-import Password from "./Password";
 import AccountNavigation from "./AccountNavigation";
 import AccountContent from "./AccountContent";
+import {connect} from 'react-redux';
+
 class MyAccount extends Component{
     state={
-        showMyAccountPage:false,
-        showMyPasswordPage: false,
-        showMyPurchasePage: false,
-        showWishlistPage: false,
+        page: 'myaccount',
         mounted: false,
     };
     componentDidMount(){
         const {match: {params}} = this.props;
-        console.log("Component did unmount: ", params);
         let page = params.page;
-        if(page === "myaccount"){
-            this.setState({
-                showMyAccountPage: true,
-            })
-        }
-        if(page === "mypassword"){
-            this.setState({
-                showMyPasswordPage: true,
-            })
-        }
-        this.setState({mounted: true});
+        this.setState({page, mounted:true});
     }
-    showPageContent=(page)=>{
-        return  <AccountContent page={page}/>
+    showPageContent=(page, profile)=>{
+        return  <AccountContent page={page} profile={profile}/>
+    };
+    handleNavigation = (page) =>{
+        console.log("handle navigation: ", page);
+        this.setState({page:page})
     };
     render() {
-        const {match: {params}} = null;
+        const {profile} = this.props.auth;
         return(
             <div className="MyAccount m-2">
                 <div className="container">
                     <div className="row">
                         <div className="account-navigation col col-sm-3 col-md-3 col-lg-3">
-                           <AccountNavigation/>
+                           <AccountNavigation changePage={this.handleNavigation}/>
                         </div>
                         <div className="account-content col col-sm-9 col-md-9 col-lg-9">
-                            {this.state.mounted? this.showPageContent(params.page):<div className="d-none"/>}
-                            {this.state.showMyAccountPage? <Profile/>:<div/>}
-                            {this.state.showMyPasswordPage? <Password/>:<div/>}
-                            {/*{this.state.showMyPurchasePage? <Purchase/>:<div/>}*/}
-                            {/*{this.state.showWishlistPage? <Wishlist/>:<div/>}*/}
+                            {this.state.mounted? this.showPageContent(this.state.page, profile):<div className="d-none"/>}
                         </div>
                     </div>
                 </div>
@@ -53,4 +39,9 @@ class MyAccount extends Component{
     }
 }
 
-export default MyAccount;
+const mapStateToProps = (state) =>{
+    return{
+        auth: state.auth
+    }
+};
+export default connect(mapStateToProps, null)(MyAccount);

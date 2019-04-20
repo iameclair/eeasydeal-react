@@ -1,18 +1,18 @@
 import React from 'react';
 import {Redirect, Route} from "react-router-dom";
-
-let data = localStorage.getItem('authParams');
+import Cookies from 'js-cookie';
+let cookie = Cookies.get('token');
 
 const RequireAuth = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) =>(
-        data? <Component {...props} />
+        cookie? <Component {...props} />
             : <Redirect to='/login'/>
     )} />
 );
 
 const OnlyNonAuth = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) =>(
-        !data? <Component {...props} />
+        !cookie? <Component {...props} />
             : <Redirect to='/'/>
     )} />
 );

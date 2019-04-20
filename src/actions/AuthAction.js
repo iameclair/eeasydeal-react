@@ -8,40 +8,36 @@ const login = (data, ownProps) =>{
         AuthService.login(data)
             .then(
               res => {
-                  console.log("Auth Action success: ", res);
-                  const data ={
-                      user: res,
+                  const payload = {
                       message: res.message
                   };
-                 dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, data));
+                 dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, payload));
                  //set cookies
                   const {cookies} = ownProps;
-                  cookies.set('token', res.token, {path:'/'}, {expires:''});
-                  setTimeout(()=>{
-                      ownProps.history.push(`/`);
-                  }, 5000);
-                  const userId = data.user.id;
-                  const payload ={
-                      message: "fetch profile successfully",
-                  };
-                  dispatch(ActionUtils.request(UserConstants.FETCH_PROFILE_REQUEST, payload));
-                  AuthService.fetchProfile(userId)
+                  cookies.set('token', `Bearer ${res.data.accessToken}`, {path:'/', expires: new Date(res.data.expiredDate)});
+                  dispatch(ActionUtils.request(UserConstants.FETCH_PROFILE_REQUEST, {}));
+                  AuthService.fetchProfile()
                       .then(
                           profile =>{
                               const payload ={
                                   profile: profile,
-                                  message: "fetch profile successfully",
+                                  message: "redirecting to home page"
                               };
                               localStorage.setItem('profile', JSON.stringify(profile));
                               dispatch(ActionUtils.success(UserConstants.FETCH_PROFILE_SUCCESS, payload));
+                              setTimeout(()=>{
+                                  ownProps.history.push(`/`);
+                              }, 3000);
                           },
                           error =>{
+                              const payload ={
+                                  message:"Unable to login"
+                              }
                               dispatch(ActionUtils.failure(UserConstants.FETCH_PROFILE_FAILURE, error));
                           }
                       )
               },
               error => {
-                  console.log("Auth Action failure: ", error);
                   const data ={
                       error:error,
                       message: error.message

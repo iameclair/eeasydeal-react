@@ -23,6 +23,7 @@ class Register extends Component {
 
     render() {
         const {registration} = this.props;
+        const {attempt, loading, message, success } = registration;
         const validationSchema = Yup.object().shape({
             first_name: Yup.string()
                 .required('First name is required!'),
@@ -43,7 +44,7 @@ class Register extends Component {
 
         return (
             <Fragment>
-                {registration.attempt && registration.loading ? <div><Spinner/></div> : <div className="d-none"/>}
+                {attempt && loading ? <div><Spinner/></div> : <div className="d-none"/>}
                 <Formik
                     initialValues={{
                         first_name: '',
@@ -57,13 +58,13 @@ class Register extends Component {
                     render={props => {
                         return (
                             <div className="container" id="register">
-                                {registration.attempt && !registration.success ?
+                                {attempt && !loading && !success ?
                                     <div className="alert alert-danger m-2 text-center">
-                                        {registration.message}
+                                        {message}
                                     </div> : <div className="d-none"/>}
-                                {registration.attempt && registration.success ?
+                                {attempt && !loading && success ?
                                     <div className="alert alert-success m-2 text-center">
-                                        {registration.message}
+                                        {message}
                                     </div> : <div className="d-none"/>}
                                 <div className="Auth">
                                     <div className="auth-form-title"><h2>Register</h2></div>

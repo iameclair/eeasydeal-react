@@ -6,22 +6,17 @@ const login = (user) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    console.log("Request Options: ", requestOptions);
     return fetch(baseUrl+'/api/auth/signin', requestOptions)
         .then(handleResponse)
         .then(authParams => {
-            console.log("Login success: ", authParams);
-            if (authParams.token) {
-              localStorage.setItem('authParams', JSON.stringify(authParams));
-            }
             return Promise.resolve(authParams);
         }, error =>{
-            console.log("Login failure: ", error);
             return Promise.reject(error);
         });
 };
-async function fetchProfile(userId){
-    const response = await fetch(`${baseUrl}/v1/api/auth/sellers/${userId}`);
+async function fetchProfile(){
+    const response = await fetch(`${baseUrl}/api/auth/profile`, {credentials: "include"});
+    console.log("Auth Service profile response: ", response);
     return await handleResponse(response);
 }
 const logout = (token) =>{

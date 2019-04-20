@@ -5,10 +5,11 @@ import {connect} from "react-redux";
 class Account extends PureComponent {
     render() {
         const {auth} = this.props;
+        const {profile, loggedIn} = auth
         return (
             <div className="account">
                 {
-                    !auth.loggedIn ?
+                    !loggedIn ?
                         <div className="account-login-register">
                             <span className="clickable-link" id="loginLink"><Link to="/login">Log In</Link></span>
                             <span className="vertical-separator">|</span>
@@ -17,7 +18,8 @@ class Account extends PureComponent {
                         <div className="account-menu-container">
                             <Link to={`/account/${"myaccount"}`}>
                                 <span className="d-block m-1 p-2 border-bottom btn-menu">
-                                    <span className="badge badge-light">E</span>&nbsp; My account
+                                    <span className="badge badge-light">{profile.data.firstName.substring(0, 1)}
+                                    </span>&nbsp; My account
                                 </span>
                             </Link>
                             <Link to={`/account/${"mypurchase"}`}>

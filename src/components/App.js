@@ -32,8 +32,8 @@ class App extends Component {
                           <Route path="/product/:id" component={ProductDetails}/>
                           {/*<RouteGuards.OnlyNonAuth path="/login" component={Login}/>*/}
                           {/*/!*<RouteGuards.OnlyNonAuth path="/login" render={()=>(<Login/>)}/>*!/*/}
-                          <Route path='/login' render={() => (
-                              <Login cookies={this.props.cookies}/>
+                          <Route path='/login' render={props => (
+                              <Login {...props} cookies={this.props.cookies}/>
                           )}/>
                           <RouteGuards.OnlyNonAuth path="/register" component={Register}/>
                           <RouteGuards.OnlyNonAuth path="/forget-password" component={ForgetPassword}/>

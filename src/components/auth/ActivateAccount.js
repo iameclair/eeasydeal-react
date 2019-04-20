@@ -12,11 +12,10 @@ class ActivateAccount extends Component{
     renderSpinner =(attempt, loading)=>{
         if(attempt && loading) return <Spinner/>;
     };
-    accountActivated=(attempt, active, message)=>{
-        console.log("Activate account attempt: ", attempt, " Active: ", active, "Message: ", message);
-        if(attempt && active){
+    accountActivated=(attempt, active, message, loading)=>{
+        if(attempt && active && !loading){
             return <div className="alert alert-success m-2 text-center">{message}</div>
-        }else{
+        }else if(attempt && !active && !loading){
             return <div className="alert alert-danger m-2 text-center">{message}</div>
         }
     };
@@ -26,7 +25,7 @@ class ActivateAccount extends Component{
         return(
             <div className="container">
                 {this.renderSpinner(attempt, loading)}
-                {this.accountActivated(attempt,active,message)}
+                {this.accountActivated(attempt,active,message,loading)}
             </div>
         )
     }

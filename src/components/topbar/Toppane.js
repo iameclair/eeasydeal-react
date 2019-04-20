@@ -31,6 +31,8 @@ class Toppane extends PureComponent {
     render() {
         const {auth} = this.props;
         const {cart} = this.props;
+        const {loggedIn, profile} = auth;
+        console.log("profile: ", profile);
         return (
             <div className="Toppane">
                 <MobileNavigation/>
@@ -67,8 +69,10 @@ class Toppane extends PureComponent {
                             </div>
                             <div className="account-container">
                                 {
-                                    auth.loggedIn? <span className="d-flex justify-content-center align-items-center">
-                                        <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">Eclair</span>
+                                   loggedIn? <span className="d-flex justify-content-center align-items-center">
+                                        <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">
+                                           {profile.data.firstName}
+                                       </span>
                                         </span>:
                                         <span className="d-flex justify-content-center align-items-center">
                                             <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner"

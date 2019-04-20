@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 
-class Profile extends Component {
+class MyProfile extends PureComponent {
     render() {
+        const {profile} = this.props;
         return (
             <div className="Profile">
                 <div className="profile-personal-info">
@@ -10,20 +11,20 @@ class Profile extends Component {
                         <div className="form-group row">
                             <label htmlFor="FirstName" className="col-sm-2 col-form-label">First name</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputEmail3" value="Eclair"/>
+                                <input type="text" className="form-control" id="inputEmail3" value={profile.data.firstName}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="LastName" className="col-sm-2 col-form-label">Last Name</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control" id="inputEmail3" value="Lumu"/>
+                                <input type="text" className="form-control" id="inputEmail3" value={profile.data.lastName}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="EmailAddress" className="col-sm-2 col-form-label">Email</label>
                             <div className="col-sm-10">
                                 <input type="email" className="form-control" id="inputEmail3"
-                                       value="eclairlumu@gmail.com"/>
+                                       value={profile.data.email}/>
                             </div>
                         </div>
                     </form>
@@ -57,4 +58,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default MyProfile;

@@ -1,20 +1,20 @@
 import {UserConstants} from "../../../constants/UserConstants";
+import Cookies from 'js-cookie';
 
-let authParams = JSON.parse(localStorage.getItem('authParams'));
+const cookie = Cookies.get('token');
 let profile = JSON.parse(localStorage.getItem('profile'));
-const initState = authParams ? {
+const initState = cookie ? {
+    attempted: false,
     loading:false,
     loggedIn: true,
     message:null,
-    attempt: false,
     profile: profile,
-    authParams:authParams
 } : {
+    attempted: false,
     loading:false,
     loggedIn: false,
-    attempt: false,
     message:null,
-    authParams: {}
+    profile: null
 };
 
 const authReducer = (state = initState, action) =>{
@@ -22,6 +22,7 @@ const authReducer = (state = initState, action) =>{
         case UserConstants.LOGIN_REQUEST:
             return {
                 ...state,
+               attempted: true,
                loading: true,
             };
         case UserConstants.LOGIN_SUCCESS:
@@ -30,38 +31,36 @@ const authReducer = (state = initState, action) =>{
                 loading:false,
                 loggedIn: true,
                 message:action.payload.message,
-                attempt: true,
-                authParams: action.payload.authParams
+                attempted: true,
             };
         case UserConstants.LOGIN_FAILURE:
             return {
                 ...state,
                 loading:false,
                 loggedIn:false,
-                attempt:true,
-                message:action.payload.message
+                attempted:true,
+                message: action.payload.message,
             };
         case UserConstants.FETCH_PROFILE_REQUEST:
             return {
                 ...state,
                 loading:true,
-                message: action.payload.message,
-                attempt:true,
+                attempted:true,
             };
         case UserConstants.FETCH_PROFILE_SUCCESS:
             return{
                 ...state,
                 loading:false,
-                message: action.payload.message,
-                attempt:true,
-                profile: action.payload.profile,
+                attempted:true,
+                profile:action.payload.profile,
+                message:action.payload.message
             };
         case UserConstants.FETCH_PROFILE_FAILURE:
             return {
                 ...state,
                 loading:false,
-                message: action.payload.message,
-                attempt:true,
+                attempted:true,
+                message:action.payload.message
             };
         case UserConstants.LOGOUT_REQUEST:
             return {
