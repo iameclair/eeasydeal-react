@@ -1,7 +1,7 @@
 import {UserConstants} from "../../../constants/UserConstants";
 import Cookies from 'js-cookie';
 
-const cookie = Cookies.get('token');
+const cookie = Cookies.get('u_aui');
 let profile = JSON.parse(localStorage.getItem('profile'));
 const initState = cookie ? {
     attempted: false,

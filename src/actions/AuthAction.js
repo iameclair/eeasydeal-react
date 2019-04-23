@@ -14,7 +14,7 @@ const login = (data, ownProps) =>{
                  dispatch(ActionUtils.success(UserConstants.LOGIN_SUCCESS, payload));
                  //set cookies
                   const {cookies} = ownProps;
-                  cookies.set('token', `Bearer ${res.data.accessToken}`, {path:'/', expires: new Date(res.data.expiredDate)});
+                  cookies.set('u_aui', res.data.accessToken, {path:'/', expires: new Date(res.data.expiredDate)});
                   dispatch(ActionUtils.request(UserConstants.FETCH_PROFILE_REQUEST, {}));
                   AuthService.fetchProfile()
                       .then(

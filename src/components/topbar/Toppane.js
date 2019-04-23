@@ -71,7 +71,7 @@ class Toppane extends PureComponent {
                                 {
                                    loggedIn? <span className="d-flex justify-content-center align-items-center">
                                         <i className="fa fa-user-circle fa-2x"/>&nbsp;&nbsp;<span className="account-owner">
-                                           {profile.data.firstName}
+                                           {'E'}
                                        </span>
                                         </span>:
                                         <span className="d-flex justify-content-center align-items-center">

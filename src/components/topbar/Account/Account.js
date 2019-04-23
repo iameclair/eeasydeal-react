@@ -18,7 +18,7 @@ class Account extends PureComponent {
                         <div className="account-menu-container">
                             <Link to={`/account/${"myaccount"}`}>
                                 <span className="d-block m-1 p-2 border-bottom btn-menu">
-                                    <span className="badge badge-light">{profile.data.firstName.substring(0, 1)}
+                                    <span className="badge badge-light">{'e'}
                                     </span>&nbsp; My account
                                 </span>
                             </Link>
