@@ -8,7 +8,8 @@ export const getProducts = () =>{
         dispatch(ActionUtils.request(ProductConstants.GET_PRODUCT_REQUEST, {}));
         ProductService.getProducts().then(
             data =>{
-                dispatch(ActionUtils.success(ProductConstants.GET_PRODUCT_SUCCESS, data))
+                console.log("Products Response: ", data.data);
+                dispatch(ActionUtils.success(ProductConstants.GET_PRODUCT_SUCCESS, data.data))
             },
             error =>{
                 dispatch(ActionUtils.failure(ProductConstants.GET_PRODUCT_FAILURE, error))

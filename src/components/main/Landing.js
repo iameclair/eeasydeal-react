@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import Carousel from "./Carousel";
 import Product from "./products/Product";
 import ProductPagination from "./products/ProductPagination";
-import CreateProduct from "./products/CreateProduct";
 
 class Landing extends Component {
     componentDidMount() {
@@ -22,12 +21,12 @@ class Landing extends Component {
         return <Product
             id={product.id}
             category={product.category}
-            descr={product.description}
-            discount={product.discounted_price}
+            descr={product.shortDescription}
+            discount={product.price.reducedPrice}
             isNew={product.hasNewTag}
             isActive={product.is_active}
             name={product.name}
-            actualPrice={product.price}
+            actualPrice={product.price.rrp}
             expiryDate={this.computeSaleTime(product.sale_start, product.sale_end)}
             seller={product.seller}
             shortDescr={product.short_description}
@@ -47,6 +46,7 @@ class Landing extends Component {
     };
 
     render() {
+        console.log("Landing page: ", this.props.products);
         let numberOfPages = Math.floor(this.computerNumberOfPages(this.props.products.count, 25));
         const {results} = this.props.products;
         let {currentPage} = this.props.products;

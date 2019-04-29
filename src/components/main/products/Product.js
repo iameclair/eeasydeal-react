@@ -6,10 +6,10 @@ class Product extends Component {
     render() {
         return (
             <div className="Product">
-                <img src={this.props.banners[0].image} height="150" alt="Card cap"/>
+                <img src={this.props.banners[0].path} height="150" alt="Card cap"/>
                 <div className="card-body">
                     <h5 className="card-title" style={{color: '#13215b'}}>{this.props.name}</h5>
-                    <p className="card-text text-muted">{this.props.shortDescr}</p>
+                    <p className="card-text text-muted">{this.props.descr}</p>
                     <div className="pricesection clearfix">
                         <div className="left-section float-left">
                                 <span className="location d-block">
@@ -19,11 +19,11 @@ class Product extends Component {
                                     <div className="d-inline-block mr-1" style={{color: '#f3cb00'}}>
                                         <i className="fa fa-clock"/>
                                     </div>
-                                     <div className="d-inline-block text-muted">
-                                         <i className="fa fa-clock-o"/>&nbsp;
-                                         <span className="d-inline-block"><CountdownTimer count={this.props.expiryDate} size={10}
-                                         color={"#6c757d"}/></span>
-                                     </div>
+                                     {/*<div className="d-inline-block text-muted">*/}
+                                         {/*<i className="fa fa-clock-o"/>&nbsp;*/}
+                                         {/*<span className="d-inline-block"><CountdownTimer count={this.props.expiryDate} size={10}*/}
+                                         {/*color={"#6c757d"}/></span>*/}
+                                     {/*</div>*/}
                                 </span>
                         </div>
                         <div className="right-section float-right">
