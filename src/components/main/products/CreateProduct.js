@@ -7,7 +7,6 @@ class CreateProduct extends PureComponent{
             <Fragment>
                 <h1>Uploading image test</h1>
                 <form onSubmit={e=>{e.preventDefault();
-                    console.log("the file : ", this.state.file);
                     let url = "http://localhost:4000/api/file/uploadMultipleFiles";
                     const formData = new FormData();
                     formData.append(
@@ -18,7 +17,6 @@ class CreateProduct extends PureComponent{
                         method: 'POST',
                         body: formData
                     };
-                    console.log("Request option: ", requestOptions);
                     let fetch1 = fetch;
                     fetch1(url, requestOptions)
                         .then(success=>{console.log(success)}, failure=>{console.log(failure)});

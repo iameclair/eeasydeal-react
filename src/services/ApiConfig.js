@@ -1,14 +1,15 @@
 export let baseUrl = "http://localhost:4000";
 
 export const handleResponse = (response) =>{
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        const {status} = data;
-        console.log("status: ", status);
-        if(status === 200 || status === 201){
+    const {status} = response;
+    if(status === 200 || status === 201){
+        return response.text().then(text => {
+            const data = text && JSON.parse(text);
             return Promise.resolve(data);
-        }else{
-            return Promise.reject(data);
-        }
-    });
+        });
+    }else if(status === 404){
+        return Promise.reject(new Error("resource not found"));
+    }else{
+        return Promise.reject(new Error("Something went wrong"));
+    }
 };

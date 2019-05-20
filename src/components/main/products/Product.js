@@ -4,9 +4,10 @@ import CountdownTimer from "react-component-countdown-timer";
 class Product extends Component {
 
     render() {
+        const {banners} = this.props;
         return (
             <div className="Product">
-                <img src={this.props.banners[0].path} height="150" alt="Card cap"/>
+                <img src={banners[0].path} height="150" alt="Card cap"/>
                 <div className="card-body">
                     <h5 className="card-title" style={{color: '#13215b'}}>{this.props.name}</h5>
                     <p className="card-text text-muted">{this.props.descr}</p>

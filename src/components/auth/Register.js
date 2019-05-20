@@ -16,7 +16,6 @@ class Register extends Component {
             "password": values.password,
             "password2": values.confirmPassword
         };
-        console.log(user);
         props.createAccount(user);
         setSubmitting(false);
     };

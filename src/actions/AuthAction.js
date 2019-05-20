@@ -68,14 +68,12 @@ const activateAccount = (activate, ownProps) =>{
         AuthService.activateAccount(activate)
             .then(
                 success => {
-                    console.log("Auth Action Activate Account Success: ", success);
                     dispatch(ActionUtils.success(UserConstants.ACTIVATE_SUCCESS, success));
                     setTimeout (()=>{
                         ownProps.history.push("/login");
                     }, 4000)
                 },
                 error => {
-                    console.log("Auth Action Activate Account Failure: ", error);
                     dispatch(ActionUtils.failure(UserConstants.ACTIVATE_FAILURE,error));
                 }
             )

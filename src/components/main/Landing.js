@@ -46,7 +46,6 @@ class Landing extends Component {
     };
 
     render() {
-        console.log("Landing page: ", this.props.products);
         let numberOfPages = Math.floor(this.computerNumberOfPages(this.props.products.count, 25));
         const {results} = this.props.products;
         let {currentPage} = this.props.products;

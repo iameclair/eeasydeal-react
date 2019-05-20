@@ -16,7 +16,6 @@ const login = (user) => {
 };
 async function fetchProfile(){
     const response = await fetch(`${baseUrl}/api/auth/profile`, {credentials: "include"});
-    console.log("Auth Service profile response: ", response);
     return await handleResponse(response);
 }
 const logout = (token) =>{
@@ -75,10 +74,8 @@ const activateAccount = (token) => {
     return fetch(baseUrl+`/api/auth/activate/${token}`, requestOptions)
         .then(handleResponse)
         .then(success => {
-            console.log("Auth Service Activate Account Success: ", success);
             return Promise.resolve(success);
         }, error =>{
-            console.log("Auth Service Activate Account Failure: ", error);
             return Promise.reject(error);
         });
 };

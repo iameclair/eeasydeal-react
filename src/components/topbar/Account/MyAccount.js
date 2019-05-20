@@ -17,7 +17,6 @@ class MyAccount extends Component{
         return  <AccountContent page={page} profile={profile}/>
     };
     handleNavigation = (page) =>{
-        console.log("handle navigation: ", page);
         this.setState({page:page})
     };
     render() {

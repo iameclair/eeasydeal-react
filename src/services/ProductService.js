@@ -1,7 +1,7 @@
 import {baseUrl, handleResponse} from "./ApiConfig";
 
 async function getProducts(){
-    const response = await fetch(baseUrl+"/api/product/");
+    const response = await fetch(baseUrl+"/api/products/");
     return await handleResponse(response);
 }
 async function getProductsofPage(page){

@@ -19,7 +19,6 @@ const productReducer = (state = initState, action) =>{
                 results:[]
             };
         case ProductConstants.GET_PRODUCT_SUCCESS:
-            console.log("Product Reducer: ",action.payload);
             return {
                 // count: action.payload.count,
                 // next: action.payload.next,
